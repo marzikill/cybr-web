@@ -1,0 +1,187 @@
+* Operating Systems
+** Maîtriser Linux
+
+GNU/Linux est un système d'exploitation libre et opensource. Comme le code source est ouvert, il est particulièrement adapté pour toute personne souhaitant étudier le fonctionnement de son ordinateur. 
+
+*** Installer un environnement Linux
+:PROPERTIES:
+:niveau:   debutant
+:END:
+
+Installer un environnement Linux sur sa machine est le premier pas vers la libération !
+
+Ressources.
+- [[https://learn.microsoft.com/fr-fr/windows/wsl/install][WSL]] : installer un environnement Linux en ligne de commande sous Windows
+- [[https://openclassrooms.com/fr/courses/7170491-initiez-vous-a-linux][Initiez-vous à Linux]] : installer et configurer une distribution Linux sur votre ordinateur
+
+*** Apprendre à utiliser la ligne de commande
+:PROPERTIES:
+:needs:    [[Installer un environnement Linux]]
+:niveau:   intermediaire
+:END:
+
+La ligne de commande est un outil fondamental pour contrôler son système d'exploitation. 
+
+Ressources.
+- [[https://luffah.xyz/bidules/Terminus/][Terminus]] : Un jeu en ligne pour apprendre la ligne de commande.
+- [[https://github.com/phyver/GameShell][GameShell]] : Un jeu sous Linux pour apprendre la ligne de commande. 
+- [[https://pwn.college/linux-luminarium/][pwn.college : linux]] : Apprendre pas à pas à utiliser linux
+
+*** Écrire des scripts système
+:PROPERTIES:
+:needs: [[Apprendre à utiliser la ligne de commande]]
+:niveau: avancé
+:END:
+
+Il est possible d'écrire des programmes à l'aide des commandes linux : on parle de scripts bash. L'exécution des scripts peuvent être automatisés avec l'outil cron. 
+
+Ressources.
+- [[https://www.shellscript.sh/][Shell Scripting Tutorial]]
+- [[https://doc.ubuntu-fr.org/cron][cron]]
+
+** Apprendre un éditeur de code
+
+Un.e développeur.euse passe la plupart de son temps à écrire du texte. Pour cette raison, il est important d'avoir un éditeur confortable.
+
+*** VScode
+:PROPERTIES:
+:niveau:   debutant
+:END:
+
+Un éditeur de code facile à prendre en main, avec beaucoup de fonctionnalités. 
+
+Ressources.
+- [[https://code.visualstudio.com/][VScode]]
+
+*** ViM
+:PROPERTIES:
+:niveau:   intermediaire
+:END:
+
+ViM est un éditeur de texte icônique dont la prise en main peut s'avérer... surprenante. Difficile de s'en passer une fois habitué. Un éditeur de vrai geek.
+
+Ressources.
+- [[https://vimschool.netlify.app/introduction/vimtutor/][vimtutor]] : Un tutoriel rapide pour apprendre les commandes ViM.
+- [[https://vim-adventures.com/][ViM adventures]] : Apprendre les commandes ViM sous forme de jeu. 
+- [[https://www.vim-hero.com/][ViM Hero]] : Un tutoriel en ligne pour apprendre les commandes ViM. 
+- [[https://github.com/micahkepe/vimtutor-sequel][vimtutor-sequel]] : La suite de vimtutor. Tutoriel sur des notions avancées. 
+
+*** Emacs
+:PROPERTIES:
+:needs:    [[ViM]]
+:niveau:   avancé
+:END:
+
+Un autre éditeur de vrai geek. Des possibilités de configurations incroyable, mais demande beaucoup de connaissances.
+
+Ressources.
+- [[https://www.gnu.org/software/emacs/tour/][Emacs Tour]]
+
+*** Programmer son éditeur
+:PROPERTIES:
+:needs:    [[Emacs]], [[VScode]]
+:niveau:   expert
+:END:
+
+Il est toujours possible de configurer son éditeur de texte préféré pour lui ajouter de nouvelles fonctionnalités. Attention, pour les experts !
+
+Ressources.
+- [[https://protesilaos.com/codelog/2024-11-28-basic-emacs-configuration/][protesilaos's config]]
+- [[https://codeberg.org/ashton314/emacs-bedrock][emacs-bedrock]]
+
+** Programmation système
+*** Construire un ordinateur
+:PROPERTIES:
+:niveau:   avancé
+:END:
+
+Un ordinateur ne comprend que des 0 et des 1. Oui mais c'est à dire ?
+
+Ressources.
+- [[https://store.steampowered.com/app/1444480/Turing_Complete/][Turing Complete]] : Un jeu sur steam où vous construisez un ordinateur "à partir de rien". 
+- [[https://nandgame.com/][NAND Game]] : Une version en ligne et plus courte du jeu [[https://store.steampowered.com/app/1444480/Turing_Complete/][Turing Complete]]
+- [[https://www.youtube.com/playlist?list=PLUOaI24LpvQN2Y53vWepO2LMabKPIplar][Building a computer with LogiSim]] : Un cours Youtube sur la construction d'un ordinateur. 
+
+*** Programmation bas niveau
+
+Ressources. 
+- [[https://pwn.college/computing-101/][pwn.college : computing 101]]
+
+**** Langage assembleur
+:PROPERTIES:
+:niveau:   expert
+:END:
+
+Le langage assembleur est ce qui se rapproche le plus de la manière dont les instructions sont exécutées sur le CPU. 
+
+Ressources.
+- [[https://coddy.tech/landing/fr/assembly][Apprendre l'assembleur]] : Des leçons interactives sur [[https://coddy.tech][coddy.tech]]
+- [[https://pwn.college/cse365-s2024/assembly-crash-course/][(pwn.college) Assembly Crash Course]] : Comprendre les bases de l'assembleur.
+- [[https://metalup.org/al/AL_Student.pdf][Assembly Language Programming]] : Un manuel de cours
+- [[https://www.peterhigginson.co.uk/AQA/][Assembly Language Simulator]] : Exécuter des programmes assembleur étape par étape en ligne
+  
+**** Langage C
+:PROPERTIES:
+:niveau:   expert
+:END:
+
+À peine plus haut niveau que l'assembleur.
+
+Ressources.
+- [[https://pwn.college/intro-to-programming-languages/][(pwn.college) Intro to Programming Languages]]
+- [[https://www.codecademy.com/learn/paths/c][Learn C]]
+  
+** Gérer un serveur web
+:PROPERTIES:
+:needs:    [[Apprendre à utiliser la ligne de commande]]
+:END:
+*** Créer une page web locale
+:PROPERTIES:
+:niveau:   debutant
+:END:
+
+Créer une page HTML, dont le style est géré par un fichier CSS et l'interactivité par un programme javascript.
+
+Ressources. 
+- [[https://openclassrooms.com/en/courses/1603881-creez-votre-site-web-avec-html5-et-css3][Créer votre site web avec HTML et CSS]]
+- [[https://dev.to/douiri/learn-css-with-these-games-5e4m][Apprendre le CSS en jouant]]
+
+*** Explorer le réseau du lycée
+:PROPERTIES:
+:niveau:   intermediaire
+:END:
+
+Comprendre la notion de réseau de machines. Se connecter à une machine en SSH. Interagir avec une machine distante.
+
+*** Réaliser des projets
+:PROPERTIES:
+:needs:    [[Créer une page web locale]], [[Explorer le réseau du lycée]]
+:END:
+**** Créer système de chat
+:PROPERTIES:
+:niveau:   intermediaire
+:END:
+
+Pour pouvoir vous parler en cours en toute discrétion. 
+
+**** Créer serveur de fichiers
+:PROPERTIES:
+:niveau:   intermediaire
+:END:
+
+Pour pouvoir accès à vos fichiers quelque soit votre ordinateur.
+
+**** Créer serveur mail
+:PROPERTIES:
+:niveau:   intermediaire
+:END:
+
+Pour que l'on puisse vous envoyer des mails sur votre propre machine. 
+
+**** Utiliser raspberry pi comme serveur 
+:PROPERTIES:
+:niveau:   avancé
+:END:
+
+Pour avoir un serveur web à soi.
+

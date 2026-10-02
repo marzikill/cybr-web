@@ -1,0 +1,1197 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#063d70">
+  <meta name="description" content="Club CYBR du lycée — choisir un pôle et avancer en autonomie sur des projets informatiques.">
+  <title>Club CYBR — Lycée</title>
+  <style>
+:root {
+  --navy:#063d70;
+  --navy-deep:#041e38;
+  --gold:#ffc629;
+  --gold-2:#f2b800;
+  --ice:#f4f7fa;
+  --ink:#092a45;
+  --muted:#6a8195;
+  --line:#d7e1e9;
+  --shadow:0 24px 60px rgba(4,30,56,.13);
+  --dot:#d5dae5;
+  --panel:#fff;
+  --edge:#79839a;
+  --accent:#24357a;
+}
+@media (prefers-color-scheme:dark) {
+  :root {
+    --dot:#232a3a;
+    --panel:#1a2030;
+    --ink:#e8ecf5;
+    --muted:#9aa4ba;
+    --line:#2a3247;
+    --edge:#7f8aa6;
+    --accent:#8fb0ff;
+  }
+}
+* { box-sizing:border-box }
+html { scroll-behavior:smooth }
+body {
+  margin:0;
+  color:var(--ink);
+  font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
+  background:var(--ice);
+  overflow-x:hidden;
+}
+a { text-decoration:none; color:inherit }
+button { font:inherit }
+.page-width { width:min(1240px,calc(100% - 48px)); margin-inline:auto }
+/* --- Fond décoratif --- */
+.bg-grid {
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  opacity:.16;
+  background-image:linear-gradient(rgba(5,61,112,.12) 1px,transparent 1px),linear-gradient(90deg,rgba(5,61,112,.12) 1px,transparent 1px);
+  background-size:30px 30px;
+  mask-image:linear-gradient(to bottom,black 0 55%,transparent 90%);
+  z-index:-3;
+}
+.bg-circuit {
+  position:fixed;
+  pointer-events:none;
+  z-index:-2;
+  opacity:.34;
+}
+.bg-circuit::before, .bg-circuit::after {
+  content:"";
+  position:absolute;
+  background:var(--gold);
+  box-shadow:0 0 0 5px rgba(255,198,41,.06);
+}
+.bg-circuit-a {
+  width:320px;
+  height:240px;
+  right:-60px;
+  top:110px;
+  border:3px solid rgba(6,61,112,.35);
+  border-left:0;
+  clip-path:polygon(18% 0,100% 0,100% 100%,0 100%,0 78%,18% 78%);
+}
+.bg-circuit-a::before {
+  width:82px;
+  height:3px;
+  left:-20px;
+  top:58px;
+}
+.bg-circuit-a::after {
+  width:3px;
+  height:72px;
+  left:60px;
+  bottom:-20px;
+}
+.bg-circuit-b {
+  width:250px;
+  height:210px;
+  left:-80px;
+  top:620px;
+  border:3px solid rgba(6,61,112,.25);
+  border-right:0;
+  clip-path:polygon(0 0,82% 0,82% 20%,100% 20%,100% 100%,0 100%);
+}
+.bg-circuit-b::before {
+  width:70px;
+  height:3px;
+  right:-20px;
+  top:50px;
+}
+.bg-circuit-b::after {
+  width:3px;
+  height:52px;
+  right:40px;
+  top:-15px;
+}
+/* --- En-tête --- */
+.site-header {
+  position:sticky;
+  top:0;
+  z-index:30;
+  height:78px;
+  padding:0 max(24px,calc((100vw - 1240px)/2));
+  display:flex;
+  align-items:center;
+  gap:32px;
+  background:rgba(4,30,56,.94);
+  backdrop-filter:blur(16px);
+  border-bottom:1px solid rgba(255,255,255,.08);
+  color:#fff;
+}
+.brand {
+  display:flex;
+  align-items:center;
+  gap:12px;
+  min-width:0;
+}
+.brand-logo { display:block; width:46px; height:46px }
+.brand-text { display:flex; flex-direction:column; gap:2px }
+.header-nav { display:flex; gap:12px; margin-left:auto }
+.header-nav a {
+  padding:9px calc(12px - .3em) 9px 12px;   /* le retrait à droite compense l'espacement après la dernière lettre */
+  border:2px solid #fff;
+  font:700 12px/1 "Courier New",ui-monospace,monospace;
+  letter-spacing:.3em;
+  text-transform:uppercase;
+  color:#fff;
+  transition:color .2s, border-color .2s;
+}
+.header-nav a:hover { color:var(--gold); border-color:var(--gold) }
+.header-nav a:focus-visible { outline-color:var(--gold) }
+@media (max-width:1020px) {
+  .header-nav { gap:8px }
+  .header-nav a { padding:8px calc(9px - .18em) 8px 9px; font-size:11px; letter-spacing:.18em }
+}
+/* --- Hero --- */
+.hero {
+  min-height:690px;
+  display:grid;
+  grid-template-columns:1.02fr .98fr;
+  align-items:center;
+  gap:50px;
+  padding-top:46px;
+  padding-bottom:70px;
+}
+.hero-copy { padding-top:15px }
+.kicker {
+  display:flex;
+  align-items:center;
+  gap:10px;
+  color:var(--navy);
+  font-size:11px;
+  font-weight:900;
+  letter-spacing:.16em;
+}
+.kicker-line { height:3px; width:52px; background:var(--gold) }
+h1 {
+  margin:17px 0 20px;
+  font-size:clamp(48px,7vw,82px);
+  line-height:.93;
+  letter-spacing:-.055em;
+  color:var(--navy-deep);
+}
+h1 em { font-style:normal; color:var(--navy); position:relative }
+h1 em::after {
+  content:"";
+  position:absolute;
+  left:0;
+  right:8%;
+  bottom:-5px;
+  height:8px;
+  background:var(--gold);
+  z-index:-1;
+  transform:skewX(-14deg);
+}
+.hero-lead {
+  max-width:590px;
+  font-size:17px;
+  line-height:1.65;
+  color:#546e82;
+  margin:0;
+}
+.hero-cta {
+  display:flex;
+  flex-wrap:wrap;
+  gap:12px;
+  margin-top:27px;
+}
+.btn {
+  display:inline-flex;
+  align-items:center;
+  gap:16px;
+  min-height:48px;
+  padding:0 18px;
+  border-radius:11px;
+  border:1px solid var(--navy);
+  font-size:12px;
+  font-weight:900;
+  letter-spacing:.05em;
+  text-transform:uppercase;
+  transition:transform .18s,box-shadow .18s;
+}
+.btn span { font-size:17px }
+.btn:hover { transform:translateY(-2px); box-shadow:0 12px 28px rgba(4,30,56,.12) }
+.btn-gold { background:var(--gold); border-color:var(--gold-2); color:var(--navy-deep) }
+.btn-outline { background:#fff; color:var(--navy) }
+.hero-meta {
+  display:flex;
+  flex-wrap:wrap;
+  gap:18px 24px;
+  margin-top:27px;
+  font-size:11px;
+  color:#668095;
+  font-weight:700;
+}
+.hero-meta b { font-size:16px; color:var(--navy) }
+.hero-meta i {
+  display:inline-block;
+  width:5px;
+  height:5px;
+  border-radius:50%;
+  background:var(--gold);
+  margin:0 5px 1px 0;
+}
+.hero-visual {
+  min-height:540px;
+  position:relative;
+  display:grid;
+  place-items:center;
+}
+.hero-lines { position:absolute; background:var(--gold); opacity:.9 }
+.hero-lines-top {
+  width:270px;
+  height:4px;
+  top:54px;
+  right:30px;
+  box-shadow:60px 34px 0 var(--gold),115px 68px 0 var(--gold);
+}
+.hero-lines-left {
+  height:250px;
+  width:4px;
+  left:62px;
+  bottom:70px;
+  box-shadow:38px 72px 0 var(--gold),76px 125px 0 var(--gold);
+}
+.chip-shell {
+  width:min(390px,75vw);
+  aspect-ratio:1;
+  position:relative;
+  background:#c1cbd3;
+  padding:17px;
+  border:3px solid #82909a;
+  box-shadow:0 24px 50px rgba(5,36,61,.18);
+  clip-path:polygon(8% 0,92% 0,100% 8%,100% 92%,92% 100%,8% 100%,0 92%,0 8%);
+}
+.chip-shell::before {
+  content:"";
+  position:absolute;
+  inset:28px;
+  border:1px solid #a2afb8;
+  background:#d9e0e5;
+}
+.chip-board {
+  position:absolute;
+  inset:54px;
+  border-radius:14px;
+  overflow:hidden;
+  background:linear-gradient(145deg,#fbfcfd,#e6ebef);
+  border:1px solid #b5c1c9;
+  display:grid;
+  place-items:center;
+}
+.chip-inner-grid {
+  position:absolute;
+  inset:0;
+  background-image:linear-gradient(rgba(9,42,69,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(9,42,69,.07) 1px,transparent 1px);
+  background-size:18px 18px;
+}
+.chip-label {
+  position:relative;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  color:var(--navy);
+}
+.chip-pad {
+  position:absolute;
+  width:15px;
+  height:15px;
+  background:var(--gold);
+  box-shadow:0 0 0 4px rgba(255,198,41,.13);
+}
+.pad-1 { left:18%; top:18% }
+.pad-2 { right:18%; top:18% }
+.pad-3 { left:18%; bottom:18% }
+.pad-4 { right:18%; bottom:18% }
+.chip-pins {
+  position:absolute;
+  z-index:2;
+  background:repeating-linear-gradient(90deg,var(--gold) 0 8px,transparent 8px 18px);
+}
+.pins-top, .pins-bottom { left:18px; right:18px; height:18px }
+.pins-top { top:-13px }
+.pins-bottom { bottom:-13px }
+.pins-left, .pins-right {
+  top:18px;
+  bottom:18px;
+  width:18px;
+  background:repeating-linear-gradient(0deg,var(--gold) 0 8px,transparent 8px 18px);
+}
+.pins-left { left:-13px }
+.pins-right { right:-13px }
+/* --- Pôles --- */
+.poles { padding-top:72px }
+.section-topline {
+  display:flex;
+  align-items:end;
+  justify-content:space-between;
+  gap:30px;
+  margin-bottom:24px;
+}
+.section-topline>div:first-child {
+  display:flex;
+  align-items:center;
+  gap:10px;
+  flex-wrap:wrap;
+}
+.section-num {
+  font:900 12px "Courier New",monospace;
+  color:var(--gold-2);
+  background:var(--navy);
+  padding:8px 10px;
+}
+.section-label {
+  font-size:11px;
+  font-weight:900;
+  letter-spacing:.14em;
+  color:var(--navy);
+  text-transform:uppercase;
+}
+.section-topline p {
+  max-width:520px;
+  margin:0;
+  color:#71879a;
+  font-size:13px;
+  line-height:1.5;
+}
+.section-topline strong { color:var(--navy) }
+.pole-grid { display:grid; grid-template-columns:repeat(12,1fr); gap:14px }
+.pole {
+  position:relative;
+  border:0;
+  padding:0;
+  overflow:hidden;
+  cursor:pointer;
+  min-height:270px;
+  background:var(--navy);
+  text-align:left;
+  border-radius:18px;
+  box-shadow:var(--shadow);
+  isolation:isolate;
+  transition:transform .2s ease,box-shadow .2s ease;
+}
+.pole:hover { transform:translateY(-5px); box-shadow:0 30px 70px rgba(4,30,56,.2) }
+.pole:nth-child(1) { grid-column:span 5; min-height:390px }
+.pole:nth-child(2) { grid-column:span 7; min-height:250px }
+.pole:nth-child(3) { grid-column:span 4 }
+.pole:nth-child(4) { grid-column:span 4 }
+.pole:nth-child(5) { grid-column:span 4 }
+.pole img {
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  filter:saturate(.96) contrast(1.02);
+  transform:scale(1.01);
+  transition:transform .5s ease;
+}
+.pole:hover img { transform:scale(1.05) }
+.pole-overlay {
+  position:absolute;
+  inset:0;
+  background:linear-gradient(120deg,rgba(4,30,56,.92),rgba(4,30,56,.2) 72%),linear-gradient(0deg,rgba(4,30,56,.3),transparent 40%);
+  z-index:1;
+}
+.pole-content {
+  position:absolute;
+  inset:0;
+  z-index:2;
+  color:#fff;
+  padding:20px;
+  display:flex;
+  flex-direction:column;
+}
+.pole-top {
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+}
+.pole-top b {
+  display:grid;
+  place-items:center;
+  min-width:46px;
+  height:38px;
+  border:1px solid var(--gold);
+  color:var(--gold);
+  font:900 14px/1 "Courier New",monospace;
+  padding:0 7px;
+}
+.pole-top span { font:900 9px/1 "Courier New",monospace; letter-spacing:.15em; color:#c3d8e8 }
+.pole-top .available { color:var(--gold) }
+.pole strong {
+  margin-top:auto;
+  font:900 clamp(28px,3.6vw,43px)/.9 "Arial Narrow",Inter,sans-serif;
+  letter-spacing:-.045em;
+  text-transform:uppercase;
+}
+.pole-caption { margin-top:9px; color:#d4e3ee; font-size:12px }
+.pole-arrow {
+  position:absolute;
+  right:17px;
+  bottom:14px;
+  font-size:28px;
+  color:var(--gold);
+  font-weight:800;
+}
+/* --- Le principe --- */
+.principle { padding-top:86px }
+.principle-card {
+  background:var(--navy);
+  color:#fff;
+  border-radius:24px;
+  box-shadow:var(--shadow);
+  display:grid;
+  grid-template-columns:1fr 1.35fr;
+  overflow:hidden;
+  position:relative;
+}
+.principle-card::after {
+  content:"";
+  position:absolute;
+  right:-70px;
+  top:-70px;
+  width:300px;
+  height:300px;
+  border:3px solid rgba(255,198,41,.22);
+  border-radius:50%;
+  box-shadow:0 0 0 40px rgba(255,198,41,.05),0 0 0 80px rgba(255,198,41,.03);
+}
+.principle-title { padding:36px 34px; border-right:1px solid rgba(255,255,255,.12) }
+.principle-title .section-label { color:#fff }
+.principle-title h2 {
+  font:900 clamp(28px,3vw,44px)/.92 "Arial Narrow",Inter,sans-serif;
+  letter-spacing:-.04em;
+  margin:34px 0 0;
+}
+.principle-title h2 em { font-style:normal; color:var(--gold) }
+.steps {
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  position:relative;
+  z-index:1;
+}
+.step { padding:36px 24px; border-right:1px solid rgba(255,255,255,.12) }
+.step:last-child { border-right:0 }
+.step span {
+  display:inline-flex;
+  color:var(--gold);
+  border:1px solid rgba(255,198,41,.5);
+  width:36px;
+  height:30px;
+  align-items:center;
+  justify-content:center;
+  font:900 11px "Courier New",monospace;
+}
+.step strong {
+  display:block;
+  font:900 24px/1 "Arial Narrow",Inter,sans-serif;
+  text-transform:uppercase;
+  margin-top:38px;
+}
+.step p {
+  font-size:12px;
+  line-height:1.5;
+  color:#c5d6e4;
+  max-width:210px;
+}
+/* --- Parcours (graphe) --- */
+.curriculum { padding-top:105px }
+.curriculum-intro { align-items:center }
+.curriculum-intro h2 {
+  flex-basis:100%;
+  margin:9px 0 0;
+  font:900 clamp(34px,5vw,58px)/.9 "Arial Narrow",Inter,sans-serif;
+  color:var(--navy-deep);
+  letter-spacing:-.055em;
+}
+.curriculum-intro h2 em { font-style:normal; color:var(--navy) }
+.graph-frame {
+  border-radius:22px;
+  background:#fff;
+  border:1px solid #d4dfe8;
+  box-shadow:var(--shadow);
+  display:block;
+  overflow:hidden;   /* arrondit aussi les coins de l'en-tête et du pied */
+}
+.graph-header {
+  height:52px;
+  background:#082844;
+  color:#d8e7f2;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:0 18px;
+  gap:15px;
+}
+.terminal-dot {
+  width:8px;
+  height:8px;
+  border-radius:50%;
+  display:inline-block;
+  margin-right:5px;
+}
+.terminal-dot.red { background:#ec7777 }
+.terminal-dot.yellow { background:var(--gold) }
+.terminal-dot.green { background:#75d18b }
+.graph-header strong { font:900 11px "Courier New",monospace; letter-spacing:.14em; margin-left:7px }
+.graph-stage {
+  position:relative;
+  overflow:hidden;
+  min-height:80vh;
+  background:radial-gradient(circle at 50% 0,rgba(10,75,132,.05),transparent 48%),#f9fbfc;
+}
+.cy {
+  position:absolute;
+  inset:0;
+  background-image:radial-gradient(var(--dot) 1px,transparent 1px);
+  background-size:22px 22px;
+}
+.recenter {
+  position:absolute;
+  top:12px;
+  left:12px;
+  display:grid;
+  place-items:center;
+  width:38px;
+  height:38px;
+  padding:0;
+  color:var(--ink);
+  background:var(--panel);
+  border:1px solid var(--line);
+  border-radius:10px;
+  cursor:pointer;
+}
+.recenter:hover { border-color:var(--accent) }
+:focus-visible { outline:2px solid var(--accent); outline-offset:2px }
+.legend {
+  display:flex;
+  flex-wrap:wrap;
+  gap:6px 18px;
+  margin:0;
+  padding:12px 18px;
+  list-style:none;
+  font-size:.8rem;
+  color:var(--muted);
+  background:var(--panel);
+  border-top:1px solid var(--line);
+}
+.legend li { display:flex; align-items:center; gap:6px }
+.legend i, .chip i {
+  width:11px;
+  height:11px;
+  border-radius:3px;
+  border:1.5px solid;
+  display:inline-block;
+}
+.panel {
+  position:absolute;
+  top:0;
+  right:0;
+  bottom:0;
+  width:clamp(300px,28%,420px);
+  box-sizing:border-box;
+  padding:24px 22px;
+  overflow:auto;
+  background:var(--panel);
+  border-left:1px solid var(--line);
+  box-shadow:-8px 0 24px rgba(0,0,0,.08);
+  transform:translateX(105%);
+  transition:transform .25s ease;
+  z-index:10;
+}
+.panel.open { transform:none }
+.panel h2 { margin:0 28px 10px 0; font-size:1.4rem; line-height:1.25 }
+.panel h3 { margin:22px 0 8px; font-size:.95rem }
+.x {
+  position:absolute;
+  top:12px;
+  right:12px;
+  width:32px;
+  height:32px;
+  padding:0;
+  font-size:1.2rem;
+  line-height:1;
+}
+.chips {
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  margin:0;
+}
+.chip {
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  padding:2px 10px;
+  font-size:.82rem;
+  color:var(--muted);
+  border:1px solid var(--line);
+  border-radius:99px;
+}
+.desc { margin:14px 0 0 }
+.res { margin:0; padding:0; list-style:none }
+.res li { padding:8px 0; border-top:1px solid var(--line) }
+.res a {
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  color:var(--accent);
+  font-weight:700;
+  text-decoration:none;
+}
+.res a:hover { text-decoration:underline }
+.none, .res .off { color:var(--muted) }
+.res-note { margin:3px 0 0; font-size:.8rem; color:var(--muted); line-height:1.4 }
+@media (max-width:720px) {
+  .panel {
+    top:auto;
+    left:0;
+    width:auto;
+    max-height:46vh;
+    border-left:0;
+    border-top:1px solid var(--line);
+    border-radius:16px 16px 0 0;
+    transform:translateY(105%);
+  }
+}
+@media (prefers-reduced-motion:reduce) {
+  .panel { transition:none }
+}
+/* --- Pied de page --- */
+.site-footer {
+  display:flex;
+  justify-content:space-between;
+  gap:20px;
+  padding:54px 0 38px;
+  margin-top:90px;
+  border-top:1px solid var(--line);
+  font-size:11px;
+  color:#7a90a1;
+}
+.site-footer strong { color:var(--navy); letter-spacing:.12em; font-family:"Courier New",ui-monospace,monospace }
+.site-footer span { margin:0 9px; color:var(--gold-2) }
+.site-footer a { font-weight:800; color:var(--navy) }
+@media (max-width:1020px) {
+  .hero { grid-template-columns:1fr; gap:0; padding-top:35px }
+  .hero-visual { order:-1; min-height:480px }
+  .hero-copy { padding-top:0 }
+  .pole-grid { grid-template-columns:repeat(6,1fr) }
+  .pole:nth-child(1) { grid-column:span 3; min-height:340px }
+  .pole:nth-child(2) { grid-column:span 3; min-height:340px }
+  .pole:nth-child(n/**/+3) { grid-column:span 2 }
+  .principle-card { grid-template-columns:1fr }
+  .principle-title { border-right:0; border-bottom:1px solid rgba(255,255,255,.12) }
+}
+@media (max-width:720px) {
+  .page-width { width:min(100% - 28px,1240px) }
+  .site-header { padding:0 14px; gap:13px; height:68px }
+  .header-nav { display:none }
+  .hero { min-height:auto; padding:36px 0 45px }
+  .hero-visual { min-height:360px }
+  .chip-shell { width:min(300px,74vw) }
+  .chip-board { inset:42px }
+  .hero-lines-top { top:22px; right:12px }
+  .hero-lines-left { left:20px; bottom:20px }
+  .hero-meta { gap:10px 16px }
+  .poles { padding-top:45px }
+  .section-topline { align-items:flex-start; flex-direction:column }
+  .pole-grid { grid-template-columns:1fr }
+  .pole:nth-child(1), .pole:nth-child(2), .pole:nth-child(n/**/+3) { grid-column:1; min-height:270px }
+  .principle { padding-top:54px }
+  .steps { grid-template-columns:1fr }
+  .step { border-right:0; border-bottom:1px solid rgba(255,255,255,.12) }
+  .step:last-child { border-bottom:0 }
+  .curriculum { padding-top:70px }
+  .curriculum-intro h2 { font-size:44px }
+  .site-footer { flex-direction:column; margin-top:60px }
+}
+@media (prefers-reduced-motion:reduce) {
+  html { scroll-behavior:auto }
+  .btn, .pole, .pole img { transition:none }
+}
+.brand-text strong {
+  display:flex;
+  align-items:center;
+  gap:10px;
+  font:900 17px/1 "Courier New",ui-monospace,monospace;
+  letter-spacing:.12em;
+}
+.brand-text strong span { display:inline-block; font:inherit }
+.pole.selected { outline:3px solid var(--gold); outline-offset:3px }
+@media (max-width:720px) {
+  .brand-text strong { font-size:15px; gap:8px }
+  .brand-logo { width:40px; height:40px }
+}
+.chip-label span, .chip-label b { font:900 35px/.95 "Courier New",ui-monospace,monospace; letter-spacing:.08em }
+@media (max-width:720px) {
+  .chip-label span, .chip-label b { font-size:27px }
+}
+  </style>
+</head>
+<body>
+  <div class="bg-grid" aria-hidden="true"></div>
+  <div class="bg-circuit bg-circuit-a" aria-hidden="true"></div>
+  <div class="bg-circuit bg-circuit-b" aria-hidden="true"></div>
+
+  <header class="site-header">
+<div class="brand">
+  <a href="https://www.pisurquatre.xyz/" aria-label="Site Pi sur quatre">
+    <img class="brand-logo" src="assets/logo2-blanc.png" alt="" width="46" height="46">
+  </a>
+  <a class="brand-text" href="#accueil" aria-label="Club CYBR, retour à l'accueil">
+    <strong><span>CLUB</span><span>CYBR</span></strong>
+  </a>
+</div>
+    <nav class="header-nav" aria-label="Navigation principale">
+      <a href="#parcours-programmation">PG</a>
+      <a href="#parcours-ia">IA</a>
+      <a href="#parcours-os">OS</a>
+      <a href="#parcours-hacking">HK</a>
+      <a href="#parcours-3D">3D</a>
+      </nav>
+  </header>
+
+  <main id="accueil">
+    <section class="hero page-width">
+      <div class="hero-copy">
+        <div class="kicker"><span class="kicker-line"></span> DÉCOUVRE LA CYBER EN AUTONOMIE - LUNDI - 13H À 14H - A17 </div>
+        <h1>Choisis ton <em>pôle.</em><br>Construis ton <em>parcours.</em></h1>
+        <p class="hero-lead">
+          Une heure par semaine pour apprendre en faisant.
+
+	  Choisis un univers, suis les étapes proposées, puis transforme tes nouvelles compétences en projets.
+        </p>
+        <div class="hero-cta">
+          <a class="btn btn-gold" href="#poles">Choisir un pôle <span>↘</span></a>
+          <a class="btn btn-outline" href="#fonctionnement">Le principe <span>↓</span></a>
+        </div>
+        <div class="hero-meta">
+          <span><i></i> Évolue à ton rythme</span>
+          <span><i></i> Mène des projets personnels</span>
+        </div>
+      </div>
+
+      <div class="hero-visual" aria-hidden="true">
+        <div class="hero-lines hero-lines-top"></div>
+        <div class="hero-lines hero-lines-left"></div>
+        <div class="chip-shell">
+          <div class="chip-pins pins-top"></div>
+          <div class="chip-pins pins-bottom"></div>
+          <div class="chip-pins pins-left"></div>
+          <div class="chip-pins pins-right"></div>
+          <div class="chip-board">
+            <div class="chip-inner-grid"></div>
+            <div class="chip-label"><span>CLUB</span><b>CYBR</b></div>
+            <span class="chip-pad pad-1"></span><span class="chip-pad pad-2"></span>
+            <span class="chip-pad pad-3"></span><span class="chip-pad pad-4"></span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="fonctionnement" class="principle page-width">
+      <div class="principle-card">
+        <div class="principle-title">
+          <!-- <span class="section-num">01</span> -->
+          <span class="section-label">COMMENT ÇA MARCHE ?</span>
+          <h2>À toi de piloter.<br><em>Le site sert de carte.</em></h2>
+        </div>
+        <div class="steps">
+          <div class="step">
+	    <!-- <span>01</span> -->
+	    <strong>Choisis</strong><p>Un pôle qui te donne envie d'essayer.</p></div>
+          <div class="step">
+	    <!-- <span>02</span> -->
+	    <strong>Apprends</strong><p>Les notions apparaissent dans un ordre cohérent.</p></div>
+          <div class="step">
+	    <!-- <span>03</span> -->
+	    <strong>Fabrique</strong><p>Des projets te permettent de mettre en pratique.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="poles" class="poles page-width">
+      <div class="section-topline">
+        <div>
+          <span class="section-label">CHOISIS TON PÔLE</span>
+        </div>
+
+      </div>
+
+      <div class="pole-grid">
+        <button class="pole pole-programming selected" data-pole="programming" data-target="parcours-programmation" type="button">
+          <img src="assets/programming.jpg" alt="" loading="lazy">
+          <span class="pole-overlay"></span>
+          <span class="pole-content">
+            <span class="pole-top"><b>PG</b></span>
+            <strong>Programmation<br>&amp; jeux</strong>
+            <!-- <span class="pole-caption">Python · jeux · moteurs</span> -->
+            <span class="pole-arrow">↗</span>
+          </span>
+        </button>
+
+        <button class="pole" data-pole="ai" type="button">
+          <img src="assets/ai.jpg" alt="" loading="lazy">
+          <span class="pole-overlay"></span>
+          <span class="pole-content">
+            <span class="pole-top"><b>AI</b><span>À VENIR</span></span>
+            <strong>Intelligence<br>artificielle</strong>
+            <!-- <span class="pole-caption">À explorer bientôt</span> -->
+            <span class="pole-arrow">↗</span>
+          </span>
+        </button>
+
+        <button class="pole" data-pole="os" data-target="parcours-os" type="button">
+          <img src="assets/systems.jpg" alt="" loading="lazy">
+          <span class="pole-overlay"></span>
+          <span class="pole-content">
+            <span class="pole-top"><b>OS</b></span>
+            <strong>Operating<br>Systems</strong>
+            <!-- <span class="pole-caption">Linux · système · outils</span> -->
+            <span class="pole-arrow">↗</span>
+          </span>
+        </button>
+
+        <button class="pole" data-pole="hacking" type="button">
+          <img src="assets/hacking.jpg" alt="" loading="lazy">
+          <span class="pole-overlay"></span>
+          <span class="pole-content">
+            <span class="pole-top"><b>HK</b><span>À VENIR</span></span>
+            <strong>Hacking<br>éthique</strong>
+            <!-- <span class="pole-caption">Challenge · sécurité</span> -->
+            <span class="pole-arrow">↗</span>
+          </span>
+        </button>
+
+        <button class="pole" data-pole="modeling" type="button">
+          <img src="assets/modeling.jpg" alt="" loading="lazy">
+          <span class="pole-overlay"></span>
+          <span class="pole-content">
+            <span class="pole-top"><b>3D</b><span>À VENIR</span></span>
+            <strong>Modélisation<br>&amp; impression 3D</strong>
+            <!-- <span class="pole-caption">CAO · création · fabrication</span> -->
+            <span class="pole-arrow">↗</span>
+          </span>
+        </button>
+      </div>
+
+    </section>
+
+    <section id="parcours-programmation" class="curriculum page-width" data-curriculum="programmation">
+      <div class="section-topline curriculum-intro">
+        <div>
+          <span class="section-label">PARCOURS</span>
+          <h2>Programmation <em>&amp; jeux</em></h2>
+        </div>
+      </div>
+
+      <div class="graph-frame">
+        <div class="graph-header">
+          <div>
+            <span class="terminal-dot red"></span><span class="terminal-dot yellow"></span><span class="terminal-dot green"></span>
+            <strong>CYBR MAP</strong>
+          </div>
+        </div>
+        <div class="graph-stage">
+          <div class="cy"></div>
+          <button class="recenter" type="button" aria-label="Recentrer le graphe" title="Recentrer le graphe"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7V5a2 2 0 0 1 2-2h2M17 3h2a2 2 0 0 1 2 2v2M21 17v2a2 2 0 0 1-2 2h-2M7 21H5a2 2 0 0 1-2-2v-2"/><circle cx="12" cy="12" r="3"/></svg></button>
+          <aside class="panel" aria-hidden="true" aria-live="polite">
+            <button class="x" type="button" aria-label="Fermer la fiche">×</button>
+            <div class="pc"></div>
+          </aside>
+        </div>
+        <ul class="legend" aria-label="Légende"></ul>
+      </div>
+    </section>
+
+    <section id="parcours-ia" class="curriculum page-width">
+      <div class="section-topline curriculum-intro">
+        <div>
+          <span class="section-label">PARCOURS</span>
+          <h2>Intelligence <em>Artificielle</em></h2>
+        </div>
+      </div>
+
+      <div class="graph-frame">
+        <div class="graph-header">
+          <div>
+            <span class="terminal-dot red"></span><span class="terminal-dot yellow"></span><span class="terminal-dot green"></span>
+            <strong>CYBR MAP</strong>
+          </div>
+        </div>
+        <div class="graph-stage">
+          <div class="cy"></div>
+          <button class="recenter" type="button" aria-label="Recentrer le graphe" title="Recentrer le graphe"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7V5a2 2 0 0 1 2-2h2M17 3h2a2 2 0 0 1 2 2v2M21 17v2a2 2 0 0 1-2 2h-2M7 21H5a2 2 0 0 1-2-2v-2"/><circle cx="12" cy="12" r="3"/></svg></button>
+        </div>
+      </div>
+    </section>
+
+    <section id="parcours-os" class="curriculum page-width" data-curriculum="os">
+      <div class="section-topline curriculum-intro">
+        <div>
+          <span class="section-label">PARCOURS</span>
+          <h2>Operating <em>Systems</em></h2>
+        </div>
+      </div>
+
+      <div class="graph-frame">
+        <div class="graph-header">
+          <div>
+            <span class="terminal-dot red"></span><span class="terminal-dot yellow"></span><span class="terminal-dot green"></span>
+            <strong>CYBR MAP</strong>
+          </div>
+        </div>
+        <div class="graph-stage">
+          <div class="cy"></div>
+          <button class="recenter" type="button" aria-label="Recentrer le graphe" title="Recentrer le graphe"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7V5a2 2 0 0 1 2-2h2M17 3h2a2 2 0 0 1 2 2v2M21 17v2a2 2 0 0 1-2 2h-2M7 21H5a2 2 0 0 1-2-2v-2"/><circle cx="12" cy="12" r="3"/></svg></button>
+          <aside class="panel" aria-hidden="true" aria-live="polite">
+            <button class="x" type="button" aria-label="Fermer la fiche">×</button>
+            <div class="pc"></div>
+          </aside>
+        </div>
+        <ul class="legend" aria-label="Légende"></ul>
+      </div>
+    </section>
+
+    <section id="parcours-hacking" class="curriculum page-width">
+      <div class="section-topline curriculum-intro">
+        <div>
+          <span class="section-label">PARCOURS</span>
+          <h2>Hacking <em>Éthique</em></h2>
+        </div>
+      </div>
+
+      <div class="graph-frame">
+        <div class="graph-header">
+          <div>
+            <span class="terminal-dot red"></span><span class="terminal-dot yellow"></span><span class="terminal-dot green"></span>
+            <strong>CYBR MAP</strong>
+          </div>
+        </div>
+        <div class="graph-stage">
+          <div class="cy"></div>
+          <button class="recenter" type="button" aria-label="Recentrer le graphe" title="Recentrer le graphe"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7V5a2 2 0 0 1 2-2h2M17 3h2a2 2 0 0 1 2 2v2M21 17v2a2 2 0 0 1-2 2h-2M7 21H5a2 2 0 0 1-2-2v-2"/><circle cx="12" cy="12" r="3"/></svg></button>
+        </div>
+      </div>
+    </section>
+
+    <section id="parcours-3D" class="curriculum page-width">
+      <div class="section-topline curriculum-intro">
+        <div>
+          <span class="section-label">PARCOURS</span>
+          <h2>Modélisation <em>3D</em></h2>
+        </div>
+      </div>
+
+      <div class="graph-frame">
+        <div class="graph-header">
+          <div>
+            <span class="terminal-dot red"></span><span class="terminal-dot yellow"></span><span class="terminal-dot green"></span>
+            <strong>CYBR MAP</strong>
+          </div>
+        </div>
+        <div class="graph-stage">
+          <div class="cy"></div>
+          <button class="recenter" type="button" aria-label="Recentrer le graphe" title="Recentrer le graphe"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7V5a2 2 0 0 1 2-2h2M17 3h2a2 2 0 0 1 2 2v2M21 17v2a2 2 0 0 1-2 2h-2M7 21H5a2 2 0 0 1-2-2v-2"/><circle cx="12" cy="12" r="3"/></svg></button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer page-width">
+    <div><strong>CLUB CYBR</strong><span>·</span> Site créé en utilisant ChatGPT, Claude, Gemini. </div>
+    <a href="#accueil">Retour en haut ↑</a>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/cytoscape@3.30.2/dist/cytoscape.min.js"></script>
+  <script src="os.js"></script>
+  <script src="programmation.js"></script>
+
+  <script>
+    // ---------- Types et niveaux (communs à tous les pôles) ----------
+    const TYPES = {
+      etape:    { label: "Étape",    fill: "#dae8fc", stroke: "#6c8ebf" },
+      objectif: { label: "Objectif", fill: "#e1d5e7", stroke: "#9673a6" },
+      notion:   { label: "Notion",   fill: "#f5f5f5", stroke: "#666666", round: true },
+      outil:    { label: "Outil",    fill: "#f5f5f5", stroke: "#666666", round: true },
+      concours: { label: "Concours", fill: "#f5f5f5", stroke: "#666666", round: true }
+    };
+    const LEVELS = {
+      1: { label: "Débutant",      fill: "#d5e8d4", stroke: "#82b366" },
+      2: { label: "Intermédiaire", fill: "#fff2cc", stroke: "#d6b656" },
+      3: { label: "Avancé",        fill: "#F89E9E", stroke: "#b85450" },
+      4: { label: "Expert",        fill: "#CC0000", stroke: "#b85450", ink: "#ffffff" }
+    };
+
+    // Clé = valeur de l'attribut data-curriculum de la <section> correspondante.
+    // Pour ajouter un pôle : écrire ses données ci-dessus, l'ajouter ici,
+    // et donner data-curriculum="…" à sa section (avec le même contenu que celle du pôle OS).
+    const CURRICULA = { programmation: PROGRAMMATION, os: OS };
+
+    // ---------- Utilitaires communs ----------
+    const $ = id => document.getElementById(id);
+    const css = v => getComputedStyle(document.documentElement).getPropertyValue(v).trim();
+    const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+    const mobile = () => matchMedia("(max-width:720px)").matches;
+    const FONT = '"Atkinson Hyperlegible", system-ui, sans-serif';
+
+    // ---------- Apparence des nœuds ----------
+    const hasLink = n => (n.resources || []).some(r => r.url);
+    const iconSvg = c => '<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><g fill="none" stroke="' + c + '" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 2.5H2.5v7h7V7"/><path d="M7 2h3v3M10 2 5.5 6.5"/></g></svg>';
+    const iconUri = c => "data:image/svg+xml;utf8," + encodeURIComponent(iconSvg(c));
+    const look = n => {
+      const t = TYPES[n.type], l = LEVELS[n.level] || {};
+      const ink = l.ink || "#1b2233";
+      return { fill: l.fill || t.fill, stroke: l.stroke || t.stroke, ink, shape: t.round ? "round-rectangle" : "rectangle", ...(hasLink(n) ? { icon: iconUri(ink) } : {}) };
+    };
+
+    const sheet = () => [
+      { selector: "node", style: { shape: "data(shape)", "background-color": "data(fill)", "border-color": "data(stroke)", "border-width": 2,
+          width: "data(w)", height: "data(h)", label: "data(label)", "text-wrap": "wrap", "text-max-width": n => n.data("w") - 16,
+          "text-valign": "center", "text-halign": "center", "font-family": FONT, "font-size": 12, color: "data(ink)" } },
+      { selector: "node[icon]", style: { "background-image": "data(icon)", "background-fit": "none", "background-clip": "none",
+          "background-width": "14px", "background-height": "14px", "background-position-x": "100%", "background-position-y": "0%",
+          "background-offset-x": "-5px", "background-offset-y": "5px" } },
+      { selector: "edge", style: { width: 1.8, "curve-style": "round-taxi", "taxi-direction": "vertical", "taxi-turn": "20px", "taxi-radius": 10, "line-color": css("--edge"), "target-arrow-color": css("--edge"), "target-arrow-shape": "triangle", "arrow-scale": 1.3 } },
+      { selector: "edge.hl", style: { "line-color": css("--accent"), "target-arrow-color": css("--accent"), width: 3, "z-index": 9 } },
+      { selector: "node.sel", style: { "border-width": 4, "border-color": css("--accent"), "underlay-color": css("--accent"), "underlay-opacity": 0.18, "underlay-padding": 7 } }
+    ];
+
+    // ---------- Fiche latérale (contenu HTML d'un nœud) ----------
+    const arrow = '<svg viewBox="0 0 12 12" width="12" height="12" aria-hidden="true"><path d="M3 9l6-6M4 3h5v5" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>';
+    function render(n, container) {
+      const l = LEVELS[n.level], res = n.resources || [];
+      container.innerHTML =
+        "<h2>" + esc(n.title) + "</h2>" +
+        '<p class="chips"><span class="chip">' + esc(TYPES[n.type].label) + "</span>" +
+        (l ? '<span class="chip"><i style="background:' + l.fill + ";border-color:" + l.stroke + '"></i>' + esc(l.label) + "</span>" : "") + "</p>" +
+        (n.description ? '<p class="desc">' + esc(n.description) + "</p>" : "") +
+        "<h3>Ressources</h3>" +
+        (res.length ? '<ul class="res">' + res.map(r => "<li>" + (r.url
+          ? '<a href="' + esc(r.url) + '" target="_blank" rel="noopener noreferrer">' + esc(r.label) + arrow + "</a>"
+          : '<span class="off">' + esc(r.label) + "</span>") +
+          (r.note ? '<p class="res-note">' + esc(r.note) + "</p>" : "") + "</li>").join("") + "</ul>"
+          : '<p class="none">Aucune ressource associée pour le moment.</p>');
+    }
+
+    // ---------- Disposition en arbre ----------
+    function tidyTree(cy, edges, gapX, gapY) {
+      const depth = {}, primary = {}, kids = {}, pos = {};
+      const dep = n => {
+        const id = n.id();
+        if (depth[id] === undefined) { const ps = n.incomers("node"); depth[id] = ps.length ? 1 + Math.max(...ps.map(dep)) : 0; }
+        return depth[id];
+      };
+      cy.nodes().forEach(n => { kids[n.id()] = []; dep(n); });
+      edges.forEach(e => { if (primary[e.to] === undefined || depth[e.from] > depth[primary[e.to]]) primary[e.to] = e.from; });
+      edges.forEach(e => { if (primary[e.to] === e.from) kids[e.from].push(e.to); });
+      const rowH = Math.max(...cy.nodes().map(n => n.data("h")));
+      let cursor = 0;
+      const place = id => {
+        const k = kids[id];
+        if (!k.length) { const w = cy.getElementById(id).data("w"); pos[id] = { x: cursor + w / 2 }; cursor += w + gapX; }
+        else { k.forEach(place); pos[id] = { x: (pos[k[0]].x + pos[k[k.length - 1]].x) / 2 }; }
+        pos[id].y = depth[id] * (rowH + gapY);
+      };
+      cy.nodes().roots().forEach(n => place(n.id()));
+      return pos;
+    }
+
+    // ---------- Un graphe complet, à l'intérieur d'une <section> ----------
+    // Tous les éléments (.cy, .panel, .pc, .x, .recenter, .legend) sont cherchés DANS la section,
+    // ce qui permet d'avoir plusieurs graphes indépendants sur la même page.
+    function initCurriculum(section, data) {
+      const { start, nodes, edges } = data;
+      const q = sel => section.querySelector(sel);
+      const panel = q(".panel"), content = q(".pc"), stage = q(".cy");
+      const byId = Object.fromEntries(nodes.map(n => [n.id, n]));
+
+      const cy = cytoscape({
+        container: stage,
+        elements: [
+          ...nodes.map(n => ({ data: { id: n.id, label: n.title, w: n.w || 120, h: n.h || 60, ...look(n) }, position: { x: 0, y: 0 } })),
+          ...edges.map((e, i) => ({ data: { id: "e" + i, source: e.from, target: e.to } }))
+        ],
+        style: sheet(), layout: { name: "preset" },
+        minZoom: 0.25, maxZoom: 2.5, wheelSensitivity: 0.25, autounselectify: true, autoungrabify: true, boxSelectionEnabled: false
+      });
+
+      // Zoom / position qui font tenir tout le graphe dans la zone visible
+      function view() {
+        const bb = cy.elements().boundingBox(), W = cy.width(), H = cy.height(), m = 28, top = m, mob = mobile();
+        const aw = W - (mob ? 0 : panel.offsetWidth) - 2 * m, ah = H - top - m;
+        const z = Math.min(Math.max(Math.min(aw / bb.w, ah / bb.h), mob ? 0.8 : 0), 1.4);
+        return { zoom: z, pan: { x: m + Math.max(0, (aw - bb.w * z) / 2) - bb.x1 * z, y: top + Math.max(0, (ah - bb.h * z) / 2) - bb.y1 * z } };
+      }
+
+      function select(node) {
+        cy.elements().removeClass("sel hl");
+        node.addClass("sel");
+        node.connectedEdges().addClass("hl");
+        render(byId[node.id()], content);
+        panel.classList.add("open");
+        panel.setAttribute("aria-hidden", "false");
+        if (mobile()) {
+          const z = cy.zoom(), p = node.position();
+          cy.animate({ pan: { x: cy.width() / 2 - p.x * z, y: cy.height() * 0.27 - p.y * z }, duration: 250 });
+        }
+      }
+
+      function closePanel() {
+        cy.elements().removeClass("sel hl");
+        panel.classList.remove("open");
+        panel.setAttribute("aria-hidden", "true");
+      }
+
+      // Un clic (ou une touche) sur un nœud ouvre sa fiche.
+      // Cytoscape distingue déjà lui-même un clic d'un glissement (déplacement du graphe).
+      cy.on("tap", "node", e => select(e.target));
+      cy.on("mouseover", "node", () => { stage.style.cursor = "pointer"; });
+      cy.on("mouseout", "node", () => { stage.style.cursor = ""; });
+
+      q(".x").onclick = closePanel;
+      q(".recenter").onclick = () => cy.animate({ ...view(), duration: 350 });
+      addEventListener("keydown", e => { if (e.key === "Escape") closePanel(); });
+
+      q(".legend").innerHTML = Object.values(LEVELS).map(l => '<li><i style="background:' + l.fill + ";border-color:" + l.stroke + '"></i>' + esc(l.label) + "</li>").join("") + "<li>" + iconSvg("currentColor") + "Ressources en ligne</li>";
+
+      const tree = tidyTree(cy, edges, 30, 40);
+      cy.nodes().positions(n => tree[n.id()]);
+      cy.resize();
+      cy.viewport(view());
+      select(cy.getElementById(start));
+
+      // Couleurs du graphe en mode sombre
+      matchMedia("(prefers-color-scheme:dark)").addEventListener("change", () => cy.style(sheet()));
+
+      return cy;
+    }
+
+    // Initialise chaque section qui déclare un data-curriculum (les pôles « à venir » n'en ont pas encore).
+    document.querySelectorAll("[data-curriculum]").forEach(section => {
+      const data = CURRICULA[section.dataset.curriculum];
+      if (data) initCurriculum(section, data);
+      else console.warn("Aucune donnée pour le pôle « " + section.dataset.curriculum + " »");
+    });
+
+    // ---------- Cartes « pôles » ----------
+    // Un clic sélectionne la carte ; si elle a un data-target, on descend jusqu'à la section correspondante
+    // (le défilement est doux grâce à `scroll-behavior: smooth` dans le CSS).
+    const cards = [...document.querySelectorAll("[data-pole]")];
+    cards.forEach(card => card.addEventListener("click", () => {
+      cards.forEach(c => c.classList.toggle("selected", c === card));
+      const target = card.dataset.target && $(card.dataset.target);
+      if (target) target.scrollIntoView({ block: "start" });
+    }));
+  </script>
+</body>
+</html>

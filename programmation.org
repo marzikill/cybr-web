@@ -1,0 +1,160 @@
+* Programmation et jeux
+
+Des trucs en vrac
+- https://youtu.be/GwCiGixlqiU?si=WNvKH1qSn2mYeGpW : vampire survivor...
+- https://www.youtube.com/watch?v=LOhfqjmasi0 : platformer
+- https://www.youtube.com/watch?v=Dtu1cozxL-Y : ++ version précédente 
+- https://www.youtube.com/watch?v=oED12Mo2018 : platformer
+- https://www.youtube.com/watch?v=8QKoUBCwNbo : la totale depuis 0
+
+** Découvrir la pensée informatique
+
+Comprendre comment on raisonne en informatique : décomposer un problème et écrire une suite d'instructions.
+
+*** Concours Castor
+:PROPERTIES:
+:niveau:   debutant
+:END:
+
+Un concours en ligne de logique et de réflexion, où on résout des problèmes informatiques sans rien programmer. À destination des collégien.ne.s et lycée.ne.s.
+
+Vous pouvez vous entraîner sur les archives des éditions précédentes. 
+
+Ressources.
+https://concours.castor-informatique.fr/
+
+*** Apprendre les bases de Python
+:PROPERTIES:
+:niveau:   debutant
+:END:
+
+Variables, conditions, boucles, fonctions et listes : les notions de base de tout programme. Apprendre Python pour découvrir et maîtriser ces notions.
+
+Ressources.
+- [[https://www.france-ioi.org/algo/chapters.php][France IOI]] : Apprendre la programmation étape par étape, au travers de défis et de jeux en ligne.
+- [[https://fr.futurecoder.io/][Future Coder]] : Un cours de programmation en ligne et interactif.
+- [[https://codex.forge.apps.education.fr/][CodEx]] : Site d'exercices pour s'entraîner sur les notions du cours de première et terminale NSI. 
+- [[https://www.youtube.com/watch?v=XKHEtdqhLK8][(Youtube) Python Full Course]] : Cours complet de programmation Python sur Youtube. 
+- [[https://leetcode.com/][LeetCode]] : Des challenges de programmation avancée, dans différents langages.
+- [[https://adventofcode.com/][Advent Of Code]] : Un calendrier de l'avent. Chaque jour un nouveau challenge de programmation. 
+  
+** Réaliser des projets
+:PROPERTIES:
+:needs:    [[Apprendre les bases de Python]]
+:END:
+
+Apprendre à programmer passe d'abord par la réalisation de projet. Ils peuvent prendre la forme de jeux, de compétition de programmation, ou de création d'applications spécifiques. 
+
+*** Jeux avec Python
+
+On peut créer des jeux directement avec Python, en utilisant des librairies.
+
+**** Librairie Pyxel
+:PROPERTIES:
+:niveau:   intermediaire
+:END:
+
+Une librairie 2D basique qui permet de créer des jeux rétros en pixel art. 
+
+Ressources.
+- [[https://forge.apps.education.fr/florian.picard/nsi-premiere/-/raw/master/0%20-%20La%20Nuit%20du%20Code/Formation%20%C3%A0%20pyxel/1%20-%20Pyxel,%20qu'est-ce%20que%20c'est/tp1_introduction.pdf?ref_type=heads&inline=false][TP - Découvrir Pyxel]]
+- [[https://forge.apps.education.fr/florian.picard/nsi-premiere/-/raw/master/0%20-%20La%20Nuit%20du%20Code/Formation%20%C3%A0%20pyxel/2%20-%20Pyxel%20Editor/tp2_pyxeledit.pdf?ref_type=heads&inline=false][TP - Éditeur de ressources]]
+- [[https://forge.apps.education.fr/florian.picard/nsi-premiere/-/raw/master/0%20-%20La%20Nuit%20du%20Code/Formation%20%C3%A0%20pyxel/3%20-%20Animations/tp3_interactivite.pdf?ref_type=heads&inline=false][TP - Interactivité]]
+- [[https://www.cahiernum.net/J682W5][Tutoriel Pyxel Première]]
+- [[https://www.cahiernum.net/KV8H5B][Tutoriel Pyxel Terminale]]
+
+**** Librairie Pygame
+:PROPERTIES:
+:niveau:   avancé
+:needs:    [[Librairie Pyxel]],
+:END:
+
+La librairie de référence pour les jeux 2D en Python, plus complète mais plus difficile d'accès.
+
+Ressources.
+- [[https://www.pygame.org/docs/tut/newbieguide.html][Newbie Guide]] : Quelques conseils pour débuter la programmation avec pygame. 
+
+*** Compétitions de programmation
+
+Participer à des compétitions de programmation est un excellent moyen de progresser. Toutes les compétitions se font en équipe !
+
+**** Concours Algoréa
+:PROPERTIES:
+:niveau:   intermediaire
+:END:
+
+Un concours d'algorithmique et de programmation en ligne, ouvert aux collégien.ne.s et aux lycéen.ne.s.
+
+**** La Nuit du Code
+:PROPERTIES:
+:niveau:   avancé
+:needs:     [[Compétitions de programmation]], [[Librairie Pyxel]],
+:END:
+
+Un concours de création de jeu vidéo en équipe, en une nuit. Le jeu doit être écrit en Python, en utilisant la librairie pyxel. 
+
+Ressources.
+- [[https://www.nuitducode.net/][Site officiel de la Nuit du Code]]
+- [[https://www.nuitducode.net/jeux-ndc][Sélection internationale de jeux]] : Les jeux gagnants des différentes éditions de la Nuit du Code. 
+
+*** Jeux sans Python
+
+Les professionnels n'utilisent pas Python pour créer des jeux : ils crééent des jeux avec un moteur de jeu. Attention ces outils nécessitent l'apprentissage d'un autre langage de programmation !
+
+Ressources. 
+- [[https://www.youtube.com/watch?v=Y19Mw5YsgjI][(Youtube) Génération procédurale sur une grille]] 
+
+**** Godot
+:PROPERTIES:
+:niveau:   avancé
+:END:
+
+Un moteur de jeu libre et gratuit, pour la 2D comme pour la 3D.
+
+Ressources.
+- [[https://docs.godotengine.org/en/stable/getting_started/first_2d_game/index.html][2D game]] : Tutoriel pour créer un jeu en 2D.
+- [[https://docs.godotengine.org/en/stable/getting_started/first_3d_game/index.html][3D game]]  : Tutoriel pour créer un jeu en 3D.
+- [[https://devga.me/tutorials/godot2d/][Godot2D]] : Tutoriel pour créer un jeu 2D à partir de zéro.
+- [[https://godotforums.org/d/40607-a-big-list-of-great-free-godot-tutorial-series-videos][Big List of Great Tutorial]] : Beaucoup de tutoriels pour Godot en 2D, en 3D. 
+  
+**** Unity
+:PROPERTIES:
+:niveau:   expert
+:END:
+
+Un moteur de jeu professionnel très répandu, pour la 2D, la 3D et le mobile.
+
+** Programmation avancée
+:PROPERTIES:
+:needs:    [[Apprendre les bases de Python]]
+:END:
+
+Ressources.
+- [[https://leetcode.com/][LeetCode]] : des challenges de programmation avancée, dans différents langages.
+
+*** SQL
+:PROPERTIES:
+:niveau:   debutant
+:END:
+
+Les bases de données sont essentielles en informatique pour stocker de larges quantités d'informations. SQL est un langage utilisé pour interroger des bases de données. 
+
+Ressources.
+- [[https://nreveret.forge.apps.education.fr/exercices_bdd/][Exercices SQL]] : Des exercices de niveau terminale NSI en SQL.
+- [[http://wwwlgis.informatik.uni-kl.de/extra/game/?lang=en][SQL Island]] : Découvrir la syntaxe SQL au travers d'un tutoriel en ligne sous forme de jeu. 
+- [[https://sqlzoo.net/wiki/SQL_Tutorial][SQL Zoo]] Découvrir la syntaxe SQL au travers d'un tutoriel en ligne.
+- [[https://mystery.knightlab.com/][SQL Murder Mystery]] : Un jeu d'enquête dans lequel il est nécessaire de connaître la syntaxe SQL pour trouver le coupable. 
+  
+*** Programmation Orientée Objet
+:PROPERTIES:
+:niveau:   avancé
+:END:
+
+Organiser un programme en objets qui regroupent des données et des actions.
+
+*** Récursivité
+:PROPERTIES:
+:niveau:   expert
+:END:
+
+Pour comprendre à quoi sert la récursivité, il faut d'abord comprendre à quoi sert la récursivité.
