@@ -1,0 +1,812 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#063d70">
+  <meta name="description" content="Mettre en place la plateforme de tutorat du lycée : des élèves volontaires proposent leur aide dans une matière, d&#x27;autres trouvent un tuteur et un créneau. Simple d&#x27;abord, plus ambitieux ensuite.">
+  <title>Une plateforme de tutorat — Club CYBR</title>
+  
+  <style>
+:root {
+  --navy:#063d70;
+  --navy-deep:#041e38;
+  --gold:#ffc629;
+  --gold-2:#f2b800;
+  --ice:#f4f7fa;
+  --ink:#092a45;
+  --muted:#6a8195;
+  --line:#d7e1e9;
+  --shadow:0 24px 60px rgba(4,30,56,.13);
+  --dot:#d5dae5;
+  --panel:#fff;
+  --edge:#79839a;
+  --accent:#24357a;
+}
+@media (prefers-color-scheme:dark) {
+  :root {
+    --dot:#232a3a;
+    --panel:#1a2030;
+    --ink:#e8ecf5;
+    --muted:#9aa4ba;
+    --line:#2a3247;
+    --edge:#7f8aa6;
+    --accent:#8fb0ff;
+  }
+}
+* { box-sizing:border-box }
+html { scroll-behavior:smooth }
+body {
+  margin:0;
+  color:var(--ink);
+  font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
+  background:var(--ice);
+  overflow-x:hidden;
+}
+a { text-decoration:none; color:inherit }
+button { font:inherit }
+.page-width { width:min(1240px,calc(100% - 48px)); margin-inline:auto }
+/* --- Fond décoratif --- */
+.bg-grid {
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  opacity:.16;
+  background-image:linear-gradient(rgba(5,61,112,.12) 1px,transparent 1px),linear-gradient(90deg,rgba(5,61,112,.12) 1px,transparent 1px);
+  background-size:30px 30px;
+  mask-image:linear-gradient(to bottom,black 0 55%,transparent 90%);
+  z-index:-3;
+}
+.bg-circuit {
+  position:fixed;
+  pointer-events:none;
+  z-index:-2;
+  opacity:.34;
+}
+.bg-circuit::before, .bg-circuit::after {
+  content:"";
+  position:absolute;
+  background:var(--gold);
+  box-shadow:0 0 0 5px rgba(255,198,41,.06);
+}
+.bg-circuit-a {
+  width:320px;
+  height:240px;
+  right:-60px;
+  top:110px;
+  border:3px solid rgba(6,61,112,.35);
+  border-left:0;
+  clip-path:polygon(18% 0,100% 0,100% 100%,0 100%,0 78%,18% 78%);
+}
+.bg-circuit-a::before {
+  width:82px;
+  height:3px;
+  left:-20px;
+  top:58px;
+}
+.bg-circuit-a::after {
+  width:3px;
+  height:72px;
+  left:60px;
+  bottom:-20px;
+}
+.bg-circuit-b {
+  width:250px;
+  height:210px;
+  left:-80px;
+  top:620px;
+  border:3px solid rgba(6,61,112,.25);
+  border-right:0;
+  clip-path:polygon(0 0,82% 0,82% 20%,100% 20%,100% 100%,0 100%);
+}
+.bg-circuit-b::before {
+  width:70px;
+  height:3px;
+  right:-20px;
+  top:50px;
+}
+.bg-circuit-b::after {
+  width:3px;
+  height:52px;
+  right:40px;
+  top:-15px;
+}
+/* --- En-tête --- */
+.site-header {
+  position:sticky;
+  top:0;
+  z-index:30;
+  height:78px;
+  padding:0 max(24px,calc((100vw - 1240px)/2));
+  display:flex;
+  align-items:center;
+  gap:32px;
+  background:rgba(4,30,56,.94);
+  backdrop-filter:blur(16px);
+  border-bottom:1px solid rgba(255,255,255,.08);
+  color:#fff;
+}
+.brand {
+  display:flex;
+  align-items:center;
+  gap:12px;
+  min-width:0;
+}
+.brand-logo { display:block; width:46px; height:46px }
+.brand-text { display:flex; flex-direction:column; gap:2px }
+.header-nav { display:flex; gap:12px; margin-left:auto }
+.header-nav a {
+  padding:9px calc(12px - .3em) 9px 12px;   /* le retrait à droite compense l'espacement après la dernière lettre */
+  border:2px solid #fff;
+  font:700 12px/1 "Courier New",ui-monospace,monospace;
+  letter-spacing:.3em;
+  text-transform:uppercase;
+  color:#fff;
+  transition:color .2s, border-color .2s;
+}
+.header-nav a:hover { color:var(--gold); border-color:var(--gold) }
+.header-nav a:focus-visible { outline-color:var(--gold) }
+@media (max-width:1020px) {
+  .header-nav { gap:8px }
+  .header-nav a { padding:8px calc(9px - .18em) 8px 9px; font-size:11px; letter-spacing:.18em }
+}
+/* --- Hero --- */
+.hero {
+  min-height:690px;
+  display:grid;
+  grid-template-columns:1.02fr .98fr;
+  align-items:center;
+  gap:50px;
+  padding-top:46px;
+  padding-bottom:70px;
+}
+.hero-copy { padding-top:15px }
+.kicker {
+  display:flex;
+  align-items:center;
+  gap:10px;
+  color:var(--navy);
+  font-size:11px;
+  font-weight:900;
+  letter-spacing:.16em;
+}
+.kicker-line { height:3px; width:52px; background:var(--gold) }
+h1 {
+  margin:17px 0 20px;
+  font-size:clamp(48px,7vw,82px);
+  line-height:.93;
+  letter-spacing:-.055em;
+  color:var(--navy-deep);
+}
+h1 em { font-style:normal; color:var(--navy); position:relative }
+h1 em::after {
+  content:"";
+  position:absolute;
+  left:0;
+  right:8%;
+  bottom:-5px;
+  height:8px;
+  background:var(--gold);
+  z-index:-1;
+  transform:skewX(-14deg);
+}
+.hero-lead {
+  max-width:590px;
+  font-size:17px;
+  line-height:1.65;
+  color:#546e82;
+  margin:0;
+}
+.hero-cta {
+  display:flex;
+  flex-wrap:wrap;
+  gap:12px;
+  margin-top:27px;
+}
+.btn {
+  display:inline-flex;
+  align-items:center;
+  gap:16px;
+  min-height:48px;
+  padding:0 18px;
+  border-radius:11px;
+  border:1px solid var(--navy);
+  font-size:12px;
+  font-weight:900;
+  letter-spacing:.05em;
+  text-transform:uppercase;
+  transition:transform .18s,box-shadow .18s;
+}
+.btn span { font-size:17px }
+.btn:hover { transform:translateY(-2px); box-shadow:0 12px 28px rgba(4,30,56,.12) }
+.btn-gold { background:var(--gold); border-color:var(--gold-2); color:var(--navy-deep) }
+.btn-outline { background:#fff; color:var(--navy) }
+.hero-meta {
+  display:flex;
+  flex-wrap:wrap;
+  gap:18px 24px;
+  margin-top:27px;
+  font-size:11px;
+  color:#668095;
+  font-weight:700;
+}
+.hero-meta b { font-size:16px; color:var(--navy) }
+.hero-meta i {
+  display:inline-block;
+  width:5px;
+  height:5px;
+  border-radius:50%;
+  background:var(--gold);
+  margin:0 5px 1px 0;
+}
+.hero-visual {
+  min-height:540px;
+  position:relative;
+  display:grid;
+  place-items:center;
+}
+.hero-lines { position:absolute; background:var(--gold); opacity:.9 }
+.hero-lines-top {
+  width:270px;
+  height:4px;
+  top:54px;
+  right:30px;
+  box-shadow:60px 34px 0 var(--gold),115px 68px 0 var(--gold);
+}
+.hero-lines-left {
+  height:250px;
+  width:4px;
+  left:62px;
+  bottom:70px;
+  box-shadow:38px 72px 0 var(--gold),76px 125px 0 var(--gold);
+}
+.chip-shell {
+  width:min(390px,75vw);
+  aspect-ratio:1;
+  position:relative;
+  background:#c1cbd3;
+  padding:17px;
+  border:3px solid #82909a;
+  box-shadow:0 24px 50px rgba(5,36,61,.18);
+  clip-path:polygon(8% 0,92% 0,100% 8%,100% 92%,92% 100%,8% 100%,0 92%,0 8%);
+}
+.chip-shell::before {
+  content:"";
+  position:absolute;
+  inset:28px;
+  border:1px solid #a2afb8;
+  background:#d9e0e5;
+}
+.chip-board {
+  position:absolute;
+  inset:54px;
+  border-radius:14px;
+  overflow:hidden;
+  background:linear-gradient(145deg,#fbfcfd,#e6ebef);
+  border:1px solid #b5c1c9;
+  display:grid;
+  place-items:center;
+}
+.chip-inner-grid {
+  position:absolute;
+  inset:0;
+  background-image:linear-gradient(rgba(9,42,69,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(9,42,69,.07) 1px,transparent 1px);
+  background-size:18px 18px;
+}
+.chip-label {
+  position:relative;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  color:var(--navy);
+}
+.chip-pad {
+  position:absolute;
+  width:15px;
+  height:15px;
+  background:var(--gold);
+  box-shadow:0 0 0 4px rgba(255,198,41,.13);
+}
+.pad-1 { left:18%; top:18% }
+.pad-2 { right:18%; top:18% }
+.pad-3 { left:18%; bottom:18% }
+.pad-4 { right:18%; bottom:18% }
+.chip-pins {
+  position:absolute;
+  z-index:2;
+  background:repeating-linear-gradient(90deg,var(--gold) 0 8px,transparent 8px 18px);
+}
+.pins-top, .pins-bottom { left:18px; right:18px; height:18px }
+.pins-top { top:-13px }
+.pins-bottom { bottom:-13px }
+.pins-left, .pins-right {
+  top:18px;
+  bottom:18px;
+  width:18px;
+  background:repeating-linear-gradient(0deg,var(--gold) 0 8px,transparent 8px 18px);
+}
+.pins-left { left:-13px }
+.pins-right { right:-13px }
+/* --- Pôles --- */
+.poles { padding-top:72px }
+.section-topline {
+  display:flex;
+  align-items:end;
+  justify-content:space-between;
+  gap:30px;
+  margin-bottom:24px;
+}
+.section-topline>div:first-child {
+  display:flex;
+  align-items:center;
+  gap:10px;
+  flex-wrap:wrap;
+}
+.section-num {
+  font:900 12px "Courier New",monospace;
+  color:var(--gold-2);
+  background:var(--navy);
+  padding:8px 10px;
+}
+.section-label {
+  font-size:11px;
+  font-weight:900;
+  letter-spacing:.14em;
+  color:var(--navy);
+  text-transform:uppercase;
+}
+.section-topline p {
+  max-width:520px;
+  margin:0;
+  color:#71879a;
+  font-size:13px;
+  line-height:1.5;
+}
+.section-topline strong { color:var(--navy) }
+.pole-grid { display:grid; grid-template-columns:repeat(12,1fr); gap:14px }
+.pole {
+  position:relative;
+  border:0;
+  padding:0;
+  overflow:hidden;
+  cursor:pointer;
+  min-height:270px;
+  background:var(--navy);
+  text-align:left;
+  border-radius:18px;
+  box-shadow:var(--shadow);
+  isolation:isolate;
+  transition:transform .2s ease,box-shadow .2s ease;
+}
+.pole:hover { transform:translateY(-5px); box-shadow:0 30px 70px rgba(4,30,56,.2) }
+.pole:nth-child(1) { grid-column:span 5; min-height:390px }
+.pole:nth-child(2) { grid-column:span 7; min-height:250px }
+.pole:nth-child(3) { grid-column:span 4 }
+.pole:nth-child(4) { grid-column:span 4 }
+.pole:nth-child(5) { grid-column:span 4 }
+.pole img {
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  filter:saturate(.96) contrast(1.02);
+  transform:scale(1.01);
+  transition:transform .5s ease;
+}
+.pole:hover img { transform:scale(1.05) }
+.pole-overlay {
+  position:absolute;
+  inset:0;
+  background:linear-gradient(120deg,rgba(4,30,56,.92),rgba(4,30,56,.2) 72%),linear-gradient(0deg,rgba(4,30,56,.3),transparent 40%);
+  z-index:1;
+}
+.pole-content {
+  position:absolute;
+  inset:0;
+  z-index:2;
+  color:#fff;
+  padding:20px;
+  display:flex;
+  flex-direction:column;
+}
+.pole-top {
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+}
+.pole-top b {
+  display:grid;
+  place-items:center;
+  min-width:46px;
+  height:38px;
+  border:1px solid var(--gold);
+  color:var(--gold);
+  font:900 14px/1 "Courier New",monospace;
+  padding:0 7px;
+}
+.pole-top span { font:900 9px/1 "Courier New",monospace; letter-spacing:.15em; color:#c3d8e8 }
+.pole-top .available { color:var(--gold) }
+.pole strong {
+  margin-top:auto;
+  font:900 clamp(28px,3.6vw,43px)/.9 "Arial Narrow",Inter,sans-serif;
+  letter-spacing:-.045em;
+  text-transform:uppercase;
+}
+.pole-caption { margin-top:9px; color:#d4e3ee; font-size:12px }
+.pole-arrow {
+  position:absolute;
+  right:17px;
+  bottom:14px;
+  font-size:28px;
+  color:var(--gold);
+  font-weight:800;
+}
+/* --- Le principe --- */
+.principle { padding-top:86px }
+.principle-card {
+  background:var(--navy);
+  color:#fff;
+  border-radius:24px;
+  box-shadow:var(--shadow);
+  display:grid;
+  grid-template-columns:1fr 1.35fr;
+  overflow:hidden;
+  position:relative;
+}
+.principle-card::after {
+  content:"";
+  position:absolute;
+  right:-70px;
+  top:-70px;
+  width:300px;
+  height:300px;
+  border:3px solid rgba(255,198,41,.22);
+  border-radius:50%;
+  box-shadow:0 0 0 40px rgba(255,198,41,.05),0 0 0 80px rgba(255,198,41,.03);
+}
+.principle-title { padding:36px 34px; border-right:1px solid rgba(255,255,255,.12) }
+.principle-title .section-label { color:#fff }
+.principle-title h2 {
+  font:900 clamp(28px,3vw,44px)/.92 "Arial Narrow",Inter,sans-serif;
+  letter-spacing:-.04em;
+  margin:34px 0 0;
+}
+.principle-title h2 em { font-style:normal; color:var(--gold) }
+.steps {
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  position:relative;
+  z-index:1;
+}
+.step { padding:36px 24px; border-right:1px solid rgba(255,255,255,.12) }
+.step:last-child { border-right:0 }
+.step span {
+  display:inline-flex;
+  color:var(--gold);
+  border:1px solid rgba(255,198,41,.5);
+  width:36px;
+  height:30px;
+  align-items:center;
+  justify-content:center;
+  font:900 11px "Courier New",monospace;
+}
+.step strong {
+  display:block;
+  font:900 24px/1 "Arial Narrow",Inter,sans-serif;
+  text-transform:uppercase;
+  margin-top:38px;
+}
+.step p {
+  font-size:12px;
+  line-height:1.5;
+  color:#c5d6e4;
+  max-width:210px;
+}
+/* --- Parcours (graphe) --- */
+.curriculum { padding-top:105px }
+.curriculum-intro { align-items:center }
+.curriculum-intro h2 {
+  flex-basis:100%;
+  margin:9px 0 0;
+  font:900 clamp(34px,5vw,58px)/.9 "Arial Narrow",Inter,sans-serif;
+  color:var(--navy-deep);
+  letter-spacing:-.055em;
+}
+.curriculum-intro h2 em { font-style:normal; color:var(--navy) }
+.graph-frame {
+  border-radius:22px;
+  background:#fff;
+  border:1px solid #d4dfe8;
+  box-shadow:var(--shadow);
+  display:block;
+  overflow:hidden;   /* arrondit aussi les coins de l'en-tête et du pied */
+}
+.graph-header {
+  height:52px;
+  background:#082844;
+  color:#d8e7f2;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:0 18px;
+  gap:15px;
+}
+.terminal-dot {
+  width:8px;
+  height:8px;
+  border-radius:50%;
+  display:inline-block;
+  margin-right:5px;
+}
+.terminal-dot.red { background:#ec7777 }
+.terminal-dot.yellow { background:var(--gold) }
+.terminal-dot.green { background:#75d18b }
+.graph-header strong { font:900 11px "Courier New",monospace; letter-spacing:.14em; margin-left:7px }
+.graph-stage {
+  position:relative;
+  overflow:hidden;
+  min-height:80vh;
+  background:radial-gradient(circle at 50% 0,rgba(10,75,132,.05),transparent 48%),#f9fbfc;
+}
+.cy {
+  position:absolute;
+  inset:0;
+  background-image:radial-gradient(var(--dot) 1px,transparent 1px);
+  background-size:22px 22px;
+}
+.recenter {
+  position:absolute;
+  top:12px;
+  left:12px;
+  display:grid;
+  place-items:center;
+  width:38px;
+  height:38px;
+  padding:0;
+  color:var(--ink);
+  background:var(--panel);
+  border:1px solid var(--line);
+  border-radius:10px;
+  cursor:pointer;
+}
+.recenter:hover { border-color:var(--accent) }
+:focus-visible { outline:2px solid var(--accent); outline-offset:2px }
+.legend {
+  display:flex;
+  flex-wrap:wrap;
+  gap:6px 18px;
+  margin:0;
+  padding:12px 18px;
+  list-style:none;
+  font-size:.8rem;
+  color:var(--muted);
+  background:var(--panel);
+  border-top:1px solid var(--line);
+}
+.legend li { display:flex; align-items:center; gap:6px }
+.legend i, .chip i {
+  width:11px;
+  height:11px;
+  border-radius:3px;
+  border:1.5px solid;
+  display:inline-block;
+}
+.panel {
+  position:absolute;
+  top:0;
+  right:0;
+  bottom:0;
+  width:clamp(300px,28%,420px);
+  box-sizing:border-box;
+  padding:24px 22px;
+  overflow:auto;
+  background:var(--panel);
+  border-left:1px solid var(--line);
+  box-shadow:-8px 0 24px rgba(0,0,0,.08);
+  transform:translateX(105%);
+  transition:transform .25s ease;
+  z-index:10;
+}
+.panel.open { transform:none }
+.panel h2 { margin:0 28px 10px 0; font-size:1.4rem; line-height:1.25 }
+.panel h3 { margin:22px 0 8px; font-size:.95rem }
+.x {
+  position:absolute;
+  top:12px;
+  right:12px;
+  width:32px;
+  height:32px;
+  padding:0;
+  font-size:1.2rem;
+  line-height:1;
+}
+.chips {
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  margin:0;
+}
+.chip {
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  padding:2px 10px;
+  font-size:.82rem;
+  color:var(--muted);
+  border:1px solid var(--line);
+  border-radius:99px;
+}
+.desc { margin:14px 0 0 }
+.res { margin:0; padding:0; list-style:none }
+.res li { padding:8px 0; border-top:1px solid var(--line) }
+.res a {
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  color:var(--accent);
+  font-weight:700;
+  text-decoration:none;
+}
+.res a:hover { text-decoration:underline }
+.none, .res .off { color:var(--muted) }
+.res-note { margin:3px 0 0; font-size:.8rem; color:var(--muted); line-height:1.4 }
+@media (max-width:720px) {
+  .panel {
+    top:auto;
+    left:0;
+    width:auto;
+    max-height:46vh;
+    border-left:0;
+    border-top:1px solid var(--line);
+    border-radius:16px 16px 0 0;
+    transform:translateY(105%);
+  }
+}
+@media (prefers-reduced-motion:reduce) {
+  .panel { transition:none }
+}
+/* --- Pied de page --- */
+.site-footer {
+  display:flex;
+  justify-content:space-between;
+  gap:20px;
+  padding:54px 0 38px;
+  margin-top:90px;
+  border-top:1px solid var(--line);
+  font-size:11px;
+  color:#7a90a1;
+}
+.site-footer strong { color:var(--navy); letter-spacing:.12em; font-family:"Courier New",ui-monospace,monospace }
+.site-footer span { margin:0 9px; color:var(--gold-2) }
+.site-footer a { font-weight:800; color:var(--navy) }
+@media (max-width:1020px) {
+  .hero { grid-template-columns:1fr; gap:0; padding-top:35px }
+  .hero-visual { order:-1; min-height:480px }
+  .hero-copy { padding-top:0 }
+  .pole-grid { grid-template-columns:repeat(6,1fr) }
+  .pole:nth-child(1) { grid-column:span 3; min-height:340px }
+  .pole:nth-child(2) { grid-column:span 3; min-height:340px }
+  .pole:nth-child(n/**/+3) { grid-column:span 2 }
+  .principle-card { grid-template-columns:1fr }
+  .principle-title { border-right:0; border-bottom:1px solid rgba(255,255,255,.12) }
+}
+@media (max-width:720px) {
+  .page-width { width:min(100% - 28px,1240px) }
+  .site-header { padding:0 14px; gap:13px; height:68px }
+  .header-nav { display:none }
+  .hero { min-height:auto; padding:36px 0 45px }
+  .hero-visual { min-height:360px }
+  .chip-shell { width:min(300px,74vw) }
+  .chip-board { inset:42px }
+  .hero-lines-top { top:22px; right:12px }
+  .hero-lines-left { left:20px; bottom:20px }
+  .hero-meta { gap:10px 16px }
+  .poles { padding-top:45px }
+  .section-topline { align-items:flex-start; flex-direction:column }
+  .pole-grid { grid-template-columns:1fr }
+  .pole:nth-child(1), .pole:nth-child(2), .pole:nth-child(n/**/+3) { grid-column:1; min-height:270px }
+  .principle { padding-top:54px }
+  .steps { grid-template-columns:1fr }
+  .step { border-right:0; border-bottom:1px solid rgba(255,255,255,.12) }
+  .step:last-child { border-bottom:0 }
+  .curriculum { padding-top:70px }
+  .curriculum-intro h2 { font-size:44px }
+  .site-footer { flex-direction:column; margin-top:60px }
+}
+@media (prefers-reduced-motion:reduce) {
+  html { scroll-behavior:auto }
+  .btn, .pole, .pole img { transition:none }
+}
+.brand-text strong {
+  display:flex;
+  align-items:center;
+  gap:10px;
+  font:900 17px/1 "Courier New",ui-monospace,monospace;
+  letter-spacing:.12em;
+}
+.brand-text strong span { display:inline-block; font:inherit }
+.pole.selected { outline:3px solid var(--gold); outline-offset:3px }
+@media (max-width:720px) {
+  .brand-text strong { font-size:15px; gap:8px }
+  .brand-logo { width:40px; height:40px }
+}
+.chip-label span, .chip-label b { font:900 35px/.95 "Courier New",ui-monospace,monospace; letter-spacing:.08em }
+@media (max-width:720px) {
+  .chip-label span, .chip-label b { font-size:27px }
+}
+  </style>
+  <link rel="stylesheet" href="../missions.css">
+</head>
+<body>
+  <div class="bg-grid" aria-hidden="true"></div>
+  <header class="site-header">
+<div class="brand">
+  <a href="https://www.pisurquatre.xyz/" aria-label="Site Pi sur quatre">
+    <img class="brand-logo" src="../assets/logo2-blanc.png" alt="" width="46" height="46">
+  </a>
+  <a class="brand-text" href="../index.html#accueil" aria-label="Club CYBR, retour à l'accueil">
+    <strong><span>CLUB</span><span>CYBR</span></strong>
+  </a>
+</div>
+    <nav class="header-nav" aria-label="Navigation principale">
+      <a href="../index.html#parcours-programmation">PG</a>
+      <a href="../index.html#parcours-ia">IA</a>
+      <a href="../index.html#parcours-os">OS</a>
+      <a href="../index.html#parcours-hacking">HK</a>
+      <a href="../index.html#parcours-3D">3D</a>
+        <a class="nav-ms" href="../index.html#missions">MISSIONS</a>
+      </nav>
+  </header>
+
+  <main class="m-page" id="haut">
+  <section class="m-hero page-width">
+    <a class="back-link" href="../index.html#missions">← TOUTES LES MISSIONS</a>
+    <div class="kicker"><span class="kicker-line"></span> MISSION - PÔLE PROGRAMMATION</div>
+    <h1>Une plateforme <em>de tutorat.</em></h1>
+    <div class="hero-lead"><p>Mettre en place la <strong>plateforme de tutorat</strong> du lycée : des élèves volontaires proposent leur aide dans une matière, d'autres trouvent un tuteur et un créneau. Simple d'abord, plus ambitieux ensuite.</p></div>
+    <div class="m-facts"><div><i></i>LIVRABLE<b>plateforme en service</b></div></div>
+  </section>
+
+  <section class="m-sec page-width">
+    <div class="section-topline curriculum-intro"><div><span class="section-label">OBJECTIF</span><h2>Ce qu'on attend <em>de toi.</em></h2></div></div>
+    <div class="m-body">
+      <div><div class="m-prose"><p>Beaucoup d'élèves sont prêts à expliquer une notion de maths ou de physique à un plus jeune, et beaucoup d'autres n'osent pas demander. Il manque un endroit où les deux se trouvent.</p>
+<p>La mission se fait en deux temps. <strong>Version 1</strong> : un formulaire pour les tuteurs, un formulaire pour les demandes, un tableau où l'équipe forme les binômes à la main. Ça doit tourner au bout de trois séances. <strong>Version 2</strong> : une vraie page web qui affiche les matières et les créneaux disponibles, et qui facilite les mises en relation.</p>
+<p>Le projet se monte avec la vie scolaire ou le prof référent : ce sont eux qui valident la charte et qui gardent la main sur les contacts.</p></div><div class="m-note"><p><strong>Données personnelles :</strong> le projet manipule des informations sur des élèves, dont beaucoup sont mineurs. On collecte le minimum, on dit à quoi elles servent, on les supprime en fin d'année, et l'accès au tableau est réservé à l'équipe et au référent adulte.</p></div></div>
+      <div class="m-side"><span class="section-label">À rendre</span><ul class="m-list"><li>Les deux formulaires (tuteur et demande d'aide) et le tableau de suivi des binômes</li><li>Une charte du tutorat d'une page : engagements du tuteur, de l'élève aidé, et où se déroulent les séances</li><li>Une page publique qui liste les matières et créneaux, sans aucune donnée personnelle</li><li>Un bilan en fin de trimestre : nombre de binômes, matières demandées, retours des élèves</li></ul><div class="m-ok"><span class="section-label">Réussie si</span><ul class="m-list"><li>Au moins dix binômes formés avant la fin du premier trimestre</li><li>Seules les données utiles sont collectées : prénom, classe, matière, créneaux</li><li>Les contacts passent par l'ENT ou la vie scolaire, jamais par des numéros personnels</li></ul></div></div>
+    </div>
+  </section>
+  
+  <section class="principle page-width">
+    <div class="principle-card">
+      <div class="principle-title"><span class="section-label">POUR DÉMARRER</span><h2>Par où<br><em>commencer.</em></h2></div>
+      <div class="steps m-steps" style="--n:3"><div class="step"><strong>D'abord</strong><p>Rencontrer la vie scolaire pour cadrer le projet et rédiger la charte ensemble</p></div><div class="step"><strong>Ensuite</strong><p>Lancer la version 1 avec les formulaires et un tableau partagé</p></div><div class="step"><strong>Enfin</strong><p>Pendant qu'elle tourne, coder la version 2 à partir de ce que les élèves demandent vraiment</p></div></div>
+    </div>
+  </section>
+  
+  <section class="m-sec page-width">
+    <div class="section-topline curriculum-intro"><div><span class="section-label">RESSOURCES ET OUTILS</span><h2>Ta boîte <em>à outils.</em></h2></div></div>
+    <div class="m-two"><div class="graph-frame m-frame">
+        <div class="graph-header"><div><span class="terminal-dot red"></span><span class="terminal-dot yellow"></span><span class="terminal-dot green"></span><strong>RESSOURCES</strong></div></div>
+        <div class="res-group">CADRE ET DONNÉES</div>
+<ul class="res"><li><a href="https://www.cnil.fr/node/866" target="_blank" rel="noopener">Établissements scolaires — CNIL ↗</a><p class="res-note">cnil.fr · Ce que dit la CNIL sur les données des élèves : quoi collecter, combien de temps garder.</p></li><li><a href="https://www.education.gouv.fr/la-protection-des-mineurs-sur-internet-7073" target="_blank" rel="noopener">La protection des élèves et de leurs données ↗</a><p class="res-note">education.gouv.fr · Le point de vue du ministère, utile pour rédiger la charte.</p></li></ul>
+<div class="res-group">CONSTRUIRE LA PLATEFORME</div>
+<ul class="res"><li><a href="https://developer.mozilla.org/fr/docs/Learn/Forms" target="_blank" rel="noopener">Formulaires web — MDN ↗</a><p class="res-note">developer.mozilla.org · Comment fonctionne un formulaire HTML, pour la version 2.</p></li><li><a href="https://framaforms.org/" target="_blank" rel="noopener">Framaforms ↗</a><p class="res-note">framaforms.org · Formulaires en ligne libres, sans publicité, pour la version 1.</p></li></ul>
+      </div><div class="graph-frame m-frame">
+        <div class="graph-header"><div><span class="terminal-dot red"></span><span class="terminal-dot yellow"></span><span class="terminal-dot green"></span><strong>OUTILS</strong></div></div>
+        <ul class="res m-tools"><li><strong>Framaforms</strong><span>Formulaires de la version 1</span></li><li><strong>Tableur partagé</strong><span>Suivi des demandes et des binômes</span></li><li><strong>Messagerie de l'ENT</strong><span>Mettre tuteur et élève en contact</span></li><li><strong>VS Code</strong><span>Coder la page de la version 2</span></li><li><strong>Git + GitHub</strong><span>Travailler à plusieurs sur le code</span></li></ul>
+      </div></div>
+  </section>
+  <nav class="m-pager page-width" aria-label="Autres missions">
+    <a href="../mission-affiche/index.html"><small>← MISSION PRÉCÉDENTE</small><b>C&#x27;est quoi un LLM ?</b></a>
+    <a href="../mission-cvl/index.html"><small>MISSION SUIVANTE →</small><b>Les commandes du CVL</b></a>
+  </nav>
+  </main>
+  <footer class="site-footer page-width">
+    <div><strong>CLUB CYBR</strong><span>·</span> Site créé en utilisant ChatGPT, Claude, Gemini. </div>
+    <a href="#haut">Retour en haut ↑</a>
+  </footer>
+</body>
+</html>

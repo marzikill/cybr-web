@@ -1,0 +1,101 @@
+/* Club CYBR — styles des missions (liste sur l'accueil + pages mission). Complète le style de index.html. */
+/* ---------- Ajouts missions (même vocabulaire que le site) ---------- */
+.header-nav .nav-ms{border-color:var(--gold);color:var(--gold)}
+.header-nav .nav-ms:hover{color:#fff;border-color:#fff}
+
+.missions{padding-top:105px}
+.mission-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.mission{position:relative;display:flex;flex-direction:column;padding:18px 20px;border-radius:18px;background:var(--navy);color:#fff;box-shadow:var(--shadow);overflow:hidden;isolation:isolate;transition:transform .2s,box-shadow .2s}
+.mission::before{content:"";position:absolute;inset:0;z-index:-1;background-image:linear-gradient(rgba(255,255,255,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.05) 1px,transparent 1px);background-size:30px 30px}
+.mission:hover{transform:translateY(-5px);box-shadow:0 30px 70px rgba(4,30,56,.2)}
+.mission strong{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;height:2.1em;font:900 clamp(22px,2.2vw,28px)/1.05 "Arial Narrow",Inter,sans-serif;letter-spacing:-.04em;text-transform:uppercase;padding-right:30px}
+.mission p{display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;height:4.5em;margin:8px 34px 0 0;font-size:12.5px;line-height:1.5;color:rgb(197,214,228)}
+.mission .pole-arrow{z-index:1;bottom:12px;font-size:24px}
+
+/* page mission */
+.m-hero{padding-top:46px;padding-bottom:10px}
+.m-hero h1{max-width:15ch}
+.back-link{display:inline-block;margin-bottom:26px;font:700 12px/1 "Courier New",monospace;letter-spacing:.14em;color:var(--navy)}
+.back-link:hover{color:var(--gold-2)}
+.m-facts{display:flex;flex-wrap:wrap;gap:12px 34px;margin-top:30px}
+.m-facts div{font-size:11px;font-weight:700;color:rgb(102,128,149);letter-spacing:.1em}
+.m-facts b{display:block;margin-top:5px;font:900 22px/1 "Arial Narrow",Inter,sans-serif;letter-spacing:-.02em;color:var(--navy-deep);text-transform:uppercase}
+.m-facts .hot b{color:#c0392b}
+.m-facts i{display:inline-block;width:5px;height:5px;border-radius:50%;background:var(--gold);margin:0 6px 1px 0}
+
+.m-sec{padding-top:86px}
+.m-body{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.8fr);gap:56px;align-items:start}
+.m-prose{font-size:16px;line-height:1.7;color:rgb(54,80,102)}
+.m-prose p{margin:0 0 14px}
+.m-prose b,.m-prose strong{color:var(--navy-deep)}
+.m-list{margin:0;padding:0;list-style:none}
+.m-list li{padding:14px 0;border-top:1px solid var(--line);font-size:15px;line-height:1.55;color:rgb(54,80,102)}
+.m-list li:last-child{border-bottom:1px solid var(--line)}
+.m-side .section-label{display:block;margin-bottom:12px}
+.m-ok{margin-top:28px;font-size:15px;line-height:1.6;color:rgb(54,80,102)}
+.m-ok .section-label{display:block;margin-bottom:8px}
+.m-note{margin-top:28px;padding:18px 20px;border-left:3px solid var(--gold);background:#fff;font-size:14px;line-height:1.6;color:rgb(54,80,102)}
+.m-note b{color:var(--navy-deep)}
+.m-extra{margin-top:30px}
+.m-extra h3{font:900 22px/1 "Arial Narrow",Inter,sans-serif;text-transform:uppercase;letter-spacing:-.02em;color:var(--navy-deep);margin:0 0 10px}
+.m-extra .m-box>p{font-size:14px;color:var(--muted)}
+.m-pre{background:rgb(8,40,68);color:rgb(216,231,242);border-radius:14px;padding:18px 20px;font:13px/1.65 "Courier New",ui-monospace,monospace;overflow-x:auto;white-space:pre-wrap;margin:12px 0 0}
+.m-pre .c{color:var(--gold)}
+.m-time{margin:0;padding:0;list-style:none}
+.m-time li{display:grid;grid-template-columns:150px 1fr;gap:12px;padding:12px 0;border-top:1px solid var(--line)}
+.m-time li:last-child{border-bottom:1px solid var(--line)}
+.m-time .dt{font:900 12px "Courier New",monospace;letter-spacing:.06em;color:var(--navy)}
+.m-time li.hot .dt{color:#c0392b}
+.m-time .ev{font-size:14.5px;color:rgb(54,80,102)}
+
+.principle-card .step strong{margin-top:0}
+.principle-card .step p{font-size:13.5px;max-width:none}
+
+.m-frame .res li{padding:14px 18px}
+.m-frame .res{padding:4px 0}
+.m-frame .res-group{padding:16px 18px 6px;font:900 10px "Courier New",monospace;letter-spacing:.16em;color:var(--muted)}
+.m-frame .res a{color:var(--accent)}
+.m-tools li{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,2fr);gap:4px 20px;align-items:baseline}
+.m-tools strong{font-size:14.5px;color:var(--navy-deep)}
+.m-tools span{font-size:14px;color:rgb(84,110,130)}
+.m-two{display:grid;grid-template-columns:1.25fr 1fr;gap:20px;align-items:start}
+
+.m-pager{display:grid;grid-template-columns:1fr 1fr;gap:14px;padding-top:70px}
+.m-pager a{padding:18px 20px;border-radius:18px;border:1px solid var(--line);background:#fff}
+.m-pager a:hover{border-color:var(--navy)}
+.m-pager a:last-child{text-align:right}
+.m-pager small{display:block;font:700 11px "Courier New",monospace;letter-spacing:.14em;color:var(--muted)}
+.m-pager b{display:block;margin-top:8px;font:900 22px/1 "Arial Narrow",Inter,sans-serif;text-transform:uppercase;letter-spacing:-.03em;color:var(--navy-deep)}
+
+@media (max-width:1020px){
+  .mission-grid{grid-template-columns:repeat(2,1fr)}
+  .m-body,.m-two{grid-template-columns:1fr;gap:34px}
+}
+@media (max-width:720px){
+  .missions,.m-sec{padding-top:60px}
+  .mission-grid{grid-template-columns:1fr}
+  .m-tools li{grid-template-columns:1fr}
+  .m-time li{grid-template-columns:1fr;gap:2px}
+  .m-pager{grid-template-columns:1fr}
+  .m-pager a:last-child{text-align:left}
+}
+
+/* ajouts pour les pages générées depuis les fichiers .md */
+.m-hero .hero-lead p{margin:0 0 10px}
+.m-hero .hero-lead strong{color:var(--navy-deep)}
+.m-list{margin:0;padding:0;list-style:none}
+ol.m-list{counter-reset:etape}
+ol.m-list li::before{counter-increment:etape;content:counter(etape) ". ";font-weight:800;color:var(--navy)}
+.m-side .m-list li,.m-extra .m-list li{font-size:15px}
+.m-ok .m-list{margin-top:4px}
+.m-extra h3{margin-top:4px}
+.m-extra h4{font-size:15px;margin:16px 0 6px;color:var(--navy-deep)}
+.m-extra p{font-size:14.5px;line-height:1.6;color:rgb(84,110,130)}
+.m-note p{margin:0 0 10px}.m-note p:last-child{margin:0}
+.m-note strong{color:var(--navy-deep)}
+.m-pre code{font:inherit}
+.m-frame-txt{padding:12px 18px;font-size:14px;color:var(--muted)}
+.m-tools li span{display:block}
+.m-steps{grid-template-columns:repeat(var(--n,3),1fr)}
+@media (max-width:720px){.m-steps{grid-template-columns:1fr}}
+.header-nav .nav-ms{border-color:var(--gold);color:var(--gold)}
