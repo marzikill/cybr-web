@@ -40,6 +40,9 @@ Tout le monde utilise ChatGPT, peu de gens savent ce qu'il y a dedans. L'affiche
 - [Les LLM expliqués en bref (3Blue1Brown)](https://www.youtube.com/watch?v=LPZh9BOjkQs) : 8 minutes, très visuel : la meilleure intro existante (sous-titres FR).
 - [Transformer Explainer](https://poloclub.github.io/transformer-explainer/) : Voir un vrai modèle prédire le mot suivant, en direct.
 - [Tokenizer](https://platform.openai.com/tokenizer) : Coller une phrase et voir comment elle est découpée en tokens.
+- [Coût environnemental des IAs](https://bonpote.com/intelligence-artificielle-le-vrai-cout-environnemental-de-la-course-a-lia/) : Impacts environnementaux directs de l’IA (consommation énergétique, émissions carbone, impacts locaux des data centers), et bouleversements sociétaux que son adoption massive génère (enjeux de pouvoir, surveillance de masse, militarisation, inégalités sociales, etc).
+- [L'IA va-t-elle bouleverser l'enseignement](https://www.youtube.com/watch?v=plczkfJ7sjw) : émission France Culture du 31 août 2025.
+- [L'IA qu'est-ce que c'est ?](https://formation1-1e8393.gitlab.io/) : formation IA pour les enseignants de SNT/NSI
 
 ### Les types d'IA
 
