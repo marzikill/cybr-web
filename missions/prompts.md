@@ -15,7 +15,7 @@ Ta mission : construire une petite bibliothèque de prompts **testés**, que n'i
 
 ## À rendre
 
-- 4 à 6 prompts système, chacun pour un usage précis (ex. tuteur socratique de maths, générateur de quiz, entraîneur au Grand oral, correcteur de méthode de dissertation, créateur de fiches)
+- 4 à 6 prompts système, chacun pour un usage précis (ex. tuteur de maths, générateur de quiz, entraîneur au Grand oral, correcteur de méthode de dissertation, créateur de fiches, etc.)
 - Pour chaque prompt : une fiche « matière · niveau · mode d'emploi · limites connues »
 - Un exemple de conversation réelle (capture ou copie) montrant le prompt en action
 - Une page de présentation de la bibliothèque (à intégrer au site CYBR)
@@ -27,42 +27,9 @@ Ta mission : construire une petite bibliothèque de prompts **testés**, que n'i
 - Il prévoit le cas où l'élève se trompe et le cas où l'IA se trompe
 - Il rappelle de vérifier dans le cours (les IA inventent parfois)
 
-## Squelette de départ
-
-À copier puis adapter. Les parties entre crochets sont à remplir.
-
-```
-# Rôle
-Tu es un tuteur de [matière] pour un élève de [niveau].
-
-# Objectif
-Aider l'élève à comprendre et à retenir, pas à finir un devoir.
-
-# Règles
-- Ne donne jamais la réponse finale directement : pose une question
-  qui fait avancer d'une étape.
-- Si l'élève se trompe, montre où, sans corriger à sa place.
-- Au bout de 3 essais ratés, donne un indice plus précis.
-- Fais des réponses courtes (5 lignes max) et un seul exercice à la fois.
-- Si tu n'es pas sûr d'une information, dis-le, et invite l'élève
-  à vérifier dans son cours.
-
-# Déroulé
-1. Demande à l'élève le chapitre qu'il révise.
-2. Pose une question de difficulté moyenne.
-3. Adapte la difficulté selon ses réponses.
-4. Termine par un récapitulatif en 3 points.
-```
-
 ## À savoir
 
 **À savoir :** chaque service d'IA a ses conditions d'âge (certains exigent 18 ans). Utilise les outils et comptes autorisés par le lycée, et ne colle jamais d'informations personnelles dans un chatbot.
-
-## Pour démarrer
-
-1. Lire un guide de prompt engineering (voir ressources) et noter 5 règles
-2. Choisir les matières et interroger des élèves/profs sur leurs besoins
-3. Écrire une v1, la tester, noter ce qui rate, réécrire (au moins 3 itérations)
 
 ## Ressources
 

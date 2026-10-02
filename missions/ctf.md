@@ -1,8 +1,8 @@
-# CSAW *Red Team.*
+# Compétition CSAW *Red Team.*
 
 Pôle : Hacking éthique
 Ordre : 3
-Résumé : Monter une équipe, s'entraîner et participer aux qualifications en ligne du concours CSAW Red Team pour lycéens.
+Résumé : Monter une équipe, s'entraîner et participer aux qualifications en ligne du concours de cybersécurité CSAW Red Team pour lycéens.
 Qualifs : 7 → 28 oct.
 Inscription : avant le 15 oct.
 
@@ -16,10 +16,10 @@ Objectif du club : inscrire une ou plusieurs équipes, s'entraîner chaque lundi
 
 ## À rendre
 
-- Équipes constituées (1 à 3 élèves du lycée, mixité encouragée) et inscrites par un prof avant le 15 octobre
+- Équipes constituées (1 à 3 élèves du lycée, mixité encouragée) et inscrites avant le 15 octobre
 - Un carnet de bord partagé : outils, commandes, astuces trouvées
-- Au moins 10 défis résolus par personne sur Root-Me ou picoCTF avant les qualifs
-- Un write-up (compte rendu de résolution) après le concours, publié sur le site CYBR
+- Au moins 10 défis résolus par groupe sur Root-Me ou picoCTF avant les qualifs
+- Un write-up (compte rendu de résolution) d'une épreuve par groupe, à rendre après le concours, publié sur le site CYBR.
 
 ## Réussie si
 
@@ -41,12 +41,6 @@ Source : page officielle de l'épreuve. À revérifier avant l'inscription.
 **Règle d'or :** on n'attaque *que* les plateformes prévues pour ça (Root-Me, picoCTF, le site du concours). S'introduire dans un système sans autorisation est un délit (article 323-1 du Code pénal), même « pour tester ».
 
 **Lycées hors métropole :** les qualifications sont ouvertes aux lycées français de l'étranger et d'outre-mer, mais la finale est réservée aux équipes de France métropolitaine.
-
-## Pour démarrer
-
-1. Cette semaine : former les équipes et demander à un prof de faire l'inscription
-2. Séances d'entraînement : un thème par lundi (web, crypto, OSINT, Linux)
-3. Pendant les qualifs : se répartir les défis, tout noter dans le carnet
 
 ## Ressources
 

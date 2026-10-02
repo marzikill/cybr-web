@@ -11,9 +11,11 @@ Mettre en place la **plateforme de tutorat** du lycée : des élèves volontaire
 
 Beaucoup d'élèves sont prêts à expliquer une notion de maths ou de physique à un plus jeune, et beaucoup d'autres n'osent pas demander. Il manque un endroit où les deux se trouvent.
 
-La mission se fait en deux temps. **Version 1** : un formulaire pour les tuteurs, un formulaire pour les demandes, un tableau où l'équipe forme les binômes à la main. Ça doit tourner au bout de trois séances. **Version 2** : une vraie page web qui affiche les matières et les créneaux disponibles, et qui facilite les mises en relation.
+La mission se fait en deux temps. 
 
-Le projet se monte avec la vie scolaire ou le prof référent : ce sont eux qui valident la charte et qui gardent la main sur les contacts.
+**Version 1** : un formulaire pour les tuteurs, un formulaire pour les demandes, un tableau où l'équipe forme les binômes à la main.
+
+**Version 2** : une vraie page web qui affiche les matières et les créneaux disponibles, et qui facilite les mises en relation.
 
 ## À rendre
 
@@ -24,19 +26,13 @@ Le projet se monte avec la vie scolaire ou le prof référent : ce sont eux qui 
 
 ## Réussie si
 
-- Au moins dix binômes formés avant la fin du premier trimestre
+- Au moins dix binômes formés pendant l'année
 - Seules les données utiles sont collectées : prénom, classe, matière, créneaux
-- Les contacts passent par l'ENT ou la vie scolaire, jamais par des numéros personnels
+- Les premiers contacts se passent par Pronote, jamais par des numéros personnels
 
 ## À savoir
 
 **Données personnelles :** le projet manipule des informations sur des élèves, dont beaucoup sont mineurs. On collecte le minimum, on dit à quoi elles servent, on les supprime en fin d'année, et l'accès au tableau est réservé à l'équipe et au référent adulte.
-
-## Pour démarrer
-
-1. Rencontrer la vie scolaire pour cadrer le projet et rédiger la charte ensemble
-2. Lancer la version 1 avec les formulaires et un tableau partagé
-3. Pendant qu'elle tourne, coder la version 2 à partir de ce que les élèves demandent vraiment
 
 ## Ressources
 

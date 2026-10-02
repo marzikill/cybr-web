@@ -2,42 +2,36 @@
 
 Pôle : IA
 Ordre : 4
-Résumé : Réaliser une affiche pour le CDI qui explique ce qu'est un LLM et cartographie les différents types d'IA.
+Résumé : Réaliser une affiche qui explique ce qu'est un LLM et cartographie les différents types d'IA.
 Livrable : affiche A3 / A2 + PDF
 
-Réaliser une **affiche** pour le CDI et les couloirs : comment fonctionne un LLM, et quels sont les différents **types d'IA**. Claire en 30 secondes, juste quand on s'approche.
+Réaliser une **affiche** : comment fonctionne un LLM, et quels sont les différents **types d'IA**. Claire et compréhensible en 30 secondes, en passant devant.
 
 ## Objectif
 
 Tout le monde utilise ChatGPT, peu de gens savent ce qu'il y a dedans. L'affiche doit répondre à deux questions, avec des schémas plus que du texte :
 
-**1. Qu'est-ce qu'un LLM ?** Un modèle entraîné sur d'énormes quantités de texte qui *prédit le mot (token) suivant*. Montrer : texte → tokens → prédiction → réponse, plus les limites (hallucinations, biais, date de coupure).
+**1. Les types d'IA :** IA symbolique (règles, systèmes experts) vs apprentissage automatique ; apprentissage supervisé, non supervisé, par renforcement ; deep learning ; IA générative (texte, image, son) vs IA qui classe ou prédit.
 
-**2. Les types d'IA :** IA symbolique (règles, systèmes experts) vs apprentissage automatique ; apprentissage supervisé, non supervisé, par renforcement ; deep learning ; IA générative (texte, image, son) vs IA qui classe ou prédit ; IA « faible » d'aujourd'hui vs IA générale (hypothétique).
+**2. Qu'est-ce qu'un LLM ?** Le nom précis de l'algorithme derrière ChatGPT, Claude etc. Mentionner les limites (hallucinations, biais, date de coupure) ainsi que les problèmes sociétaux posés (marché du travail, pollution des data centers).
 
 ## À rendre
 
-- Une affiche imprimable (A3 ou A2) + un PDF pour le site
+- Une affiche imprimable (A3 ou A2) au format PDF 
 - Un schéma « comment un LLM fabrique une réponse »
 - Une carte/arbre des types d'IA avec un exemple concret pour chacun
+- Optionnel : une version numérique pour le site
 - Les sources citées en bas de l'affiche
 
 ## Réussie si
 
 - Un élève de seconde comprend l'idée principale en moins d'une minute
 - Aucune erreur factuelle (relecture par un prof de NSI ou de sciences)
-- Moins de 150 mots au total : le visuel porte le message
 - Lisible à 2 mètres (titres ≥ 60 pt en A3)
 
 ## À savoir
 
 **Images :** utilise tes propres schémas ou des images libres de droits, et cite-les. Si tu utilises une IA pour générer un visuel, indique-le sur l'affiche.
-
-## Pour démarrer
-
-1. Se documenter (ressources ci-dessous) et lister les notions à retenir
-2. Faire 3 croquis rapides de mise en page et en choisir un
-3. Réaliser, imprimer un test, faire relire, corriger, imprimer
 
 ## Ressources
 

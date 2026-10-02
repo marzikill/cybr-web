@@ -307,8 +307,7 @@ def liste_missions(missions):
     return f'''{DEBUT}
     <section id="missions" class="missions page-width">
       <div class="section-topline curriculum-intro">
-        <div><span class="section-label">MISSIONS EN COURS</span><h2>Des projets <em>pour de vrai.</em></h2></div>
-        <p>Chaque mission répond à un besoin réel du lycée. Ouvre le brief : <strong>objectif, ressources, outils.</strong></p>
+        <div><span class="section-label">MISSIONS</span><h2>Des projets <em>utiles pour tout le monde.</em></h2></div>
       </div>
       <div class="mission-grid">{cartes}
       </div>

@@ -5,7 +5,7 @@ Ordre : 2
 Résumé : Concevoir, coder et mettre en ligne la page du journal du lycée, avec l'équipe de rédaction.
 Livrable : site en ligne
 
-Concevoir, coder et publier la **page web du journal du lycée** : une « une », des articles, des rubriques. Lisible sur téléphone, accessible à tous.
+Concevoir, coder et publier la **page web du journal du lycée** : une « une », des articles, des rubriques. Lisible sur téléphone, accessible à tous.
 
 ## Objectif
 
